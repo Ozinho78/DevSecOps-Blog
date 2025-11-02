@@ -8,6 +8,15 @@ yangshun:
     x: yangshunz
     github: yangshun
 
+Michael:
+  name: Michael Fiebelkorn
+  title: Fullstack Developer
+  url: https://portfolio.michael-fiebelkorn.de
+  image_url: https://github.com/ozinho78.png
+  socials:
+    linkedin: https://www.linkedin.com/in/michael-fiebelkorn-4099a177/
+    github: Ozinho78
+
 slorber:
   name: Sébastien Lorber
   title: Docusaurus maintainer

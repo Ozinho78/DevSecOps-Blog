@@ -1,102 +1,289 @@
-# Conduit Container Project - Checklist
+# Conduit Deployment
+
+This repository contains the **deployment configuration** for the Conduit full-stack application, a Medium.com clone. The setup uses Docker and Docker Compose to orchestrate a complete production environment.
+
+---
 
 ## Table of Contents
 
-1. [Repository](#1-repository)
-   - [Required Files](#required-files)
-   - [Dockerfiles](#dockerfiles)
-   - [.dockerignore Files](#dockerignore-files)
-   - [docker-compose.yaml](#docker-composeyaml)
-   - [README.md](#readmemd)
-2. [Documentation](#2-documentation)
-3. [Guidelines](#3-guidelines)
-   - [General Guidelines](#general-guidelines)
-   - [Security Guidelines](#security-guidelines)
-   - [Code Conventions](#code-conventions)
-   - [Testing](#testing)
+1. [Description](#description)
+2. [Prerequisites](#prerequisites)
+3. [Quickstart](#quickstart)
+4. [Usage](#usage)
+   - [Environment Configuration](#environment-configuration)
+   - [Building and Running](#building-and-running)
+   - [Accessing the Application](#accessing-the-application)
+   - [Managing Services](#managing-services)
+   - [Working with Logs](#working-with-logs)
 
 ---
 
-## 1. Repository
+## Description
 
-### Required Files
+### Components
 
-- [x] A `.gitignore` file has been created that ignores all irrelevant content from the git repository
-- [x] There is a Dockerfile for both the backend and frontend application that meets the requirements from the next section
-- [x] There is a `docker-compose.yaml` that meets the requirements of the section after next
-- [x] A file named `README.md` exists and has been created according to the criteria below
+- **Frontend**: Angular Single Page Application (SPA) served with Node.js `serve` package
+- **Backend**: Django REST API running with Gunicorn WSGI server
+- **Database**: PostgreSQL for data persistence
 
-### Dockerfiles
+### Purpose
 
-- [x] The Dockerfiles are based on a suitable base image for the respective technology stack (nodejs, python)
-- [x] Necessary environment variables are configured within the Dockerfiles
-- [x] The Dockerfiles expose a container port for internet access
-- [x] The Dockerfiles use multi-stage builds to keep the resulting container image size small
-
-### .dockerignore Files
-
-- [x] There is a `.dockerignore` file that, following the same principle as the gitignore file, lists content that should be ignored during a container build and not copied into the image (e.g., node_modules, etc.)
-
-### docker-compose.yaml
-
-- [x] There is one service each that is defined and configured: frontend, backend, database (Postgres!)
-- [x] There is an environment configuration for both services so that all non-critical variables are configured (no auth credentials!)
-- [x] There are necessary port releases and corresponding mappings so that the containers are accessible from the internet
-- [x] There are volume configurations for the container data so that the content is persisted on a file system and the data is not lost
-
-### README.md
-
-- [x] The README should contain a table of contents (ToC)
-- [x] A section with a description of the repository must be present. This description should state what the main contents are and what the purpose of the repository is
-- [x] A "Quickstart" section should be included as part of the README. Prerequisites should be briefly mentioned here and a quick start guide should be described
-- [x] A detailed version of the aforementioned section should be included as "Usage". This should go into more detail about the configuration and configurability, i.e., it should also explain how relevant passages can be modified to achieve different results
+This is a containerized deployment using multi-stage Docker builds to minimize image sizes while maintaining production-ready configuration. All services are orchestrated via Docker Compose with proper volume management for data persistence and automatic restart policies.
 
 ---
 
-## 2. Documentation
+## Prerequisites
 
-- [x] The documentation of the code and the project should be in the repository in the form of a README file
-- [x] The documentation language for all projects (and associated documents) is **English**
+- **Docker**: Version 20.10 or higher
+- **Docker Compose**: Version 2.0 or higher
+- **Git**: For repository management
 
----
-
-## 3. Guidelines
-
-### General Guidelines
-
-- [x] In addition to your GitHub repository, you should record and provide a short Loom video (maximum 5 minutes) in which you briefly show your submission and present what you have done - you don't have to mention all the details, but you should briefly address and show all relevant steps
-
-### Security Guidelines
-
-- [x] Do not store SSH keys in the workspace of your Git repository
-- [x] Do not store passwords, tokens, or usernames in your code. Use environment variables for this instead
-- [x] Do not store IP addresses or other sensitive information in a Git repository
-
-### Code Conventions
-
-- [x] The following naming convention applies to build-args, environment variables, and shell variables: `UPPER_CASE_WITH_UNDERSCORE`
-- [x] When referencing a variable, always use the `{}` notation to avoid interpretation errors: `${SOME_VAR_VALUE}`, instead of: `$SOME_VAR_VALUE`
-- [x] Default values should be configured for build-args or environment variables, but only when it makes sense
-- [x] Critical configuration such as tokens, passwords, or similar should not be stored in the code repository, but should be passed into a container, for example, by using a `.env` file
-
-### Testing
-
-Before you submit your project, you should have ensured and tested the following:
-
-- [x] The frontend of your Conduit application is accessible at the IP address of your cloud VM on port **8282**
-- [x] Your ENTRYPOINT starts a WSGI application, NOT a dev-server!
-- [x] The service containers are restarted as soon as an error occurs that leads to the termination of the container
-- [x] You can navigate through the application and data is loaded everywhere
-- [x] You can view the logs of your application via CLI and also persist them, i.e., you can save the logs to a file for later use
-
-**Save logs to file:**
-
+Verify installations:
 ```bash
-docker logs [container-name] > my-container-logs.txt
+docker --version
+docker compose version
+git --version
 ```
 
-`[container-name]` must then be replaced with the name of the container accordingly.
+---
+
+## Quickstart
+
+### 1. Clone the repository
+```bash
+git clone git clone -b feature/conduit-container git@github.com:Ozinho78/conduit-deployment.git
+cd conduit-deployment
+```
+
+### 2. Create environment file
+```bash
+cp .env.example .env
+```
+
+### 3. Configure environment variables
+Edit `.env` and set **required** values:
+```bash
+# REQUIRED: Set secure password
+POSTGRES_PASSWORD=your_secure_password_here
+
+# REQUIRED: Generate Django secret key
+DJANGO_SECRET_KEY=your_generated_secret_key_here
+
+# REQUIRED: Add your VM IP address
+DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,backend,<YOUR_VM_IP_HERE>
+CORS_ALLOWED_ORIGINS=http://localhost:8282,http://<YOUR_VM_IP_HERE>:8282
+```
+
+**Generate Django Secret Key:**
+```bash
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
+
+### 4. Build and start services
+```bash
+docker compose up -d --build
+```
+
+### 5. Access application
+- **Frontend**: `http://<YOUR_VM_IP:8282>`
+- **Backend API**: `http://<YOUR_VM_IP>:8000/api`
+- **Backend Admin**: `http://<YOUR_VM_IP>:8000/admin`
 
 ---
 
-**Developer Akademie - Conduit Checklist 2024**
+## Usage
+
+### Initial Setup
+
+**Directory structure after setup:**
+
+```bash
+conduit-deployment/
+├── .dockerignore               # Excludes Python cache, venv, .git, node_modules, dist from Docker context
+├── docker-compose.yaml         # Orchestration: frontend, backend, postgres services
+├── .env.example                # Template for .env, contains environment variables
+├── .env                        # Runtime environment variables (NOT in Git!), created by YOU
+├── .gitignore                  # Excludes .env, logs, IDE configs, OS files
+├── README.md                   # This document, project documentation with ToC, quickstart, usage
+├── conduit-frontend/           # contains frontend code, coded with Angular
+│   └── frontend.Dockerfile     # Multi-stage build: Angular build + npm serve
+├── conduit-backend/            # Contains backend code, coded with Django
+│   └── backend.Dockerfile      # Multi-stage build: Django app + Gunicorn WSGI
+│   └── entrypoint.sh           # Defines and controls default commands when container starts
+│   └── conduit/
+│       └── settings.py         # Must be modified for production (ALLOWED_HOSTS, DB config)
+```
+
+### Environment Configuration
+
+The `.env` file contains all configuration for the deployment. This file is **not** stored in Git for security reasons.
+
+**Create from template:**
+```bash
+cp .env.example .env
+nano .env  # or use your preferred editor
+```
+
+**Critical settings to modify:**
+
+1. **Database Password** (REQUIRED):
+   ```bash
+   POSTGRES_PASSWORD=use_a_strong_random_password
+   ```
+
+2. **Django Secret Key** (REQUIRED):
+   Generate using Python:
+   ```bash
+   python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+   ```
+   Then set in `.env`:
+   ```bash
+   DJANGO_SECRET_KEY=<your_generated_key_here>
+   ```
+
+3. **Allowed Hosts** (REQUIRED for production):
+   Replace `YOUR_VM_IP_HERE` with your actual VM IP address:
+   ```bash
+   DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,backend,<YOUR_VM_IP_HERE>
+   CORS_ALLOWED_ORIGINS=http://localhost:8282,http://<YOUR_VM_IP_HERE>:8282
+   ```
+
+**Optional settings:**
+
+- `DEBUG`: Set to `True` only for development (default: `False`)
+- `POSTGRES_DB`: Database name (default: `conduit`)
+- `POSTGRES_USER`: Database user (default: `conduit`)
+- `FRONTEND_PORT`: External port for frontend (default: `8282`)
+- `BACKEND_PORT`: External port for backend (default: `8000`)
+
+### Building and Running
+
+**First-time build:**
+```bash
+docker compose up -d --build
+```
+
+**Start existing containers:**
+```bash
+docker compose up -d
+```
+
+**Rebuild after code changes:**
+```bash
+docker compose up -d --build
+```
+
+**Check service status:**
+```bash
+docker compose ps
+```
+
+Expected output:
+```
+NAME                IMAGE                      STATUS
+conduit-backend     conduit-deployment-backend Up
+conduit-database    postgres:13-alpine         Up
+conduit-frontend    conduit-deployment-frontend Up
+```
+
+### Accessing the Application
+
+Once services are running, access the application at:
+
+| Service | URL | Description |
+|---------|-----|-------------|
+| Frontend | `http://<YOUR_VM_IP>:8282` | Angular SPA |
+| Backend API | `http://<YOUR_VM_IP>:8000/api` | REST API endpoints |
+| Admin Panel | `http://<YOUR_VM_IP>:8000/admin` | Django admin interface |
+
+**Create superuser for admin access:**
+```bash
+docker compose exec backend python manage.py createsuperuser
+```
+
+### Managing Services
+
+**Stop services (keeps data):**
+```bash
+docker compose stop
+```
+
+**Start stopped services:**
+```bash
+docker compose start
+```
+
+**Restart all services:**
+```bash
+docker compose restart
+```
+
+**Restart specific service:**
+```bash
+docker compose restart backend
+docker compose restart frontend
+docker compose restart database
+```
+
+**Stop and remove containers (keeps volumes):**
+```bash
+docker compose down
+```
+
+**Stop and remove everything including data:**
+> ⚠️ **WARNING**
+> This deletes all database data!
+```bash
+docker compose down -v
+```
+
+### Working with Logs
+
+**View all logs:**
+```bash
+docker compose logs
+```
+
+**Follow logs in real-time:**
+```bash
+docker compose logs -f
+```
+
+**View logs for specific service:**
+```bash
+docker compose logs backend
+docker compose logs frontend
+docker compose logs database
+```
+
+**Follow specific service logs:**
+```bash
+docker compose logs -f backend
+```
+
+**Save logs to file:**
+```bash
+# Save backend logs
+docker logs conduit-backend > backend-logs.txt
+
+# Save frontend logs
+docker logs conduit-frontend > frontend-logs.txt
+
+# Save database logs
+docker logs conduit-database > database-logs.txt
+
+# Save all logs with timestamps
+docker compose logs --timestamps > all-logs.txt
+```
+
+**View last N lines:**
+```bash
+docker compose logs --tail=100 backend
+```
+
+---
+
+**Project Information**
+- **Last Updated**: January 2026
+- **Course**: DevSecOps
+- **Project**: Conduit Containerization

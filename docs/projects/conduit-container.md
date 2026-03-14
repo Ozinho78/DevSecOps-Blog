@@ -1,4 +1,4 @@
-# Conduit Deployment
+# Conduit Container
 
 This repository contains the **deployment configuration** for the Conduit full-stack application, a Medium.com clone. The setup uses Docker and Docker Compose to orchestrate a complete production environment.
 

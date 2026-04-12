@@ -1,0 +1,18 @@
+POST /rest/user/login HTTP/1.1
+Host: 127.0.0.1:4000
+sec-ch-ua-platform: "Windows"
+Accept-Language: de-DE,de;q=0.9
+Accept: application/json, text/plain, */*
+sec-ch-ua: "Chromium";v="145", "Not:A-Brand";v="99"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36
+Origin: http://127.0.0.1:4000
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://127.0.0.1:4000/
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+{"email":"jim@juice-sh.op","password":"test1234"}

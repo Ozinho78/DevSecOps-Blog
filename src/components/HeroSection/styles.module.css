@@ -1,10 +1,9 @@
 /* ── Section ─────────────────────────────────── */
 .section {
   background: #0f172a;
-  min-height: 85vh;
   display: flex;
   align-items: center;
-  padding: 5rem 2rem;
+  padding: 72px 2rem;
 }
 
 /* ── Inner grid ──────────────────────────────── */
@@ -25,10 +24,9 @@
   align-items: flex-start;
   padding: 0;
   gap: 40px;
-  width: 664px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+  max-width: 664px;
+  flex: 1;
+  min-width: 0;
 }
 
 /* ── Name + title group (Figma: gap 16px) ─────── */
@@ -38,10 +36,8 @@
   align-items: flex-start;
   padding: 0;
   gap: 16px;
-  width: 516px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+  max-width: 516px;
+  width: 100%;
 }
 
 /* ── "Hey there 👋 I am" ──────────────────────── */
@@ -94,10 +90,8 @@
   font-size: 22px;
   line-height: 120%;
   color: #ffffff;
-  width: 664px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+  width: 100%;
+  max-width: 664px;
   margin: 0;
 }
 

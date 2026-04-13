@@ -1,30 +1,63 @@
 import React, { JSX } from 'react';
+import styles from './styles.module.css';
 
-const SKILLS = [
-  { icon: '🌐', label: 'HTML' },
-  { icon: '🎨', label: 'CSS' },
-  { icon: '⚡', label: 'JavaScript' },
-  { icon: '🐍', label: 'Python' },
-  { icon: '🐚', label: 'Shell Scripting' },
-  { icon: '📋', label: 'YAML' },
-  { icon: '🐳', label: 'Docker' },
-  { icon: '🔄', label: 'CI/CD GitHub Actions' },
-  { icon: '🔒', label: 'IT Security' },
+// Skill-Daten – icon verweist auf static/img/
+const ROWS = [
+  [
+    { label: 'HTML',                  icon: '/img/HTML.png'           },
+    { label: 'CSS',                   icon: '/img/CSS.png'            },
+    { label: 'Static site generator', icon: '/img/Docusaurier.png'     },
+  ],
+  [
+    { label: 'Python',                icon: '/img/Python.png'         },
+    { label: 'Shell scripting',       icon: '/img/Terminal.png'          },
+    { label: 'Yaml',                  icon: '/img/YAML.png'           },
+  ],
+  [
+    { label: 'Container',             icon: '/img/Docker.png'         },
+    { label: 'CI/CD with\nGitHub Actions', icon: '/img/GithubActions.png' },
+    { label: 'IT Security',           icon: '/img/IT-Security.png'    },
+  ],
 ];
 
 export default function SkillsSection(): JSX.Element {
   return (
-    <section className="skills-section" id="skills">
-      <div className="section-inner">
-        <h2 className="section-title">My skills</h2>
-        <div className="skills-grid">
-          {SKILLS.map(({ icon, label }) => (
-            <div key={label} className="skill-card">
-              <span className="skill-icon">{icon}</span>
-              <span className="skill-label">{label}</span>
+    <section className={styles.section} id="skills">
+      <div className={styles.inner}>
+ 
+        {/* Headline */}
+        <div className={styles.headline}>
+          <h2 className={styles.title}>My skills</h2>
+        </div>
+ 
+        {/* Card grid – 3 rows × 3 cards */}
+        <div className={styles.content}>
+          {ROWS.map((row, rowIdx) => (
+            <div className={styles.row} key={rowIdx}>
+              {row.map(({ label, icon }) => (
+                <div className={styles.card} key={label}>
+                  <div className={styles.cardInner}>
+                    <img
+                      className={styles.icon}
+                      src={icon}
+                      alt={label}
+                      loading="lazy"
+                    />
+                    <span className={styles.label}>
+                      {label.split('\n').map((line, i, arr) => (
+                        <React.Fragment key={i}>
+                          {line}
+                          {i < arr.length - 1 && <br />}
+                        </React.Fragment>
+                      ))}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           ))}
         </div>
+ 
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 ---
 
 # Juice Shop Security Writeups
@@ -144,9 +144,3 @@ docker rm <container-id>
 | [ExifTool](https://exiftool.org/) | Metadata extraction from image files |
 | [Python 3](https://www.python.org/) | Custom exploit scripts |
 | [SecLists](https://github.com/danielmiessler/SecLists) | Wordlists for passwords and security questions |
-
----
-
-## Submission Checklist
-
-See [CHECKLIST.md](./checklist.md) for the full project submission checklist.

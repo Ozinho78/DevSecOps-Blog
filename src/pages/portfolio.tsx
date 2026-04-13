@@ -1,13 +1,16 @@
 import React, { JSX } from 'react';
-import Layout from '@theme/Layout';
 import HeroSection from '../components/HeroSection';
 import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
+import PortfolioLayout from '../components/PortfolioLayout';
 
 export default function Portfolio(): JSX.Element {
   return (
-    <Layout title="Michael Fiebelkorn - Portfolio" description="DevSecOps Engineer Portfolio">
+    <PortfolioLayout
+      title="Michael Fiebelkorn - Portfolio"
+      description="DevSecOps Engineer Portfolio"
+    >
       <HeroSection />
       <SkillsSection />
       <ProjectsSection />
@@ -15,6 +18,6 @@ export default function Portfolio(): JSX.Element {
       <footer className="custom-footer">
         © Michael Fiebelkorn 2026 · Legal Notice
       </footer>
-    </Layout>
+    </PortfolioLayout>
   );
 }

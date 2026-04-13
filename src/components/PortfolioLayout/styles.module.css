@@ -1,0 +1,36 @@
+/* ─────────────────────────────────────────────────────────────
+   PortfolioLayout/styles.module.css
+
+   Docusaurus injiziert <body class="portfolio-page"> nur auf
+   dieser Route (via <Head><body className="portfolio-page"/></Head>).
+   Die globalen CSS-Regeln unten greifen daher ausschließlich
+   auf der Portfolio-Seite.
+   ───────────────────────────────────────────────────────────── */
+
+/* Docusaurus Navbar + Footer auf der Portfolio-Route verstecken */
+:global(body.portfolio-page) :global(.navbar),
+:global(body.portfolio-page) :global(.navbar-sidebar),
+:global(body.portfolio-page) :global(.footer) {
+  display: none !important;
+}
+
+/* Docusaurus setzt normalerweise padding-top für die fixed Navbar;
+   auf der Portfolio-Page übernehmen wir das selbst. */
+:global(body.portfolio-page) :global(.main-wrapper) {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* ── Page-Wrapper ─────────────────────────────── */
+.pageWrapper {
+  /* Offset für unsere fixed Navbar (109px aus Figma-Spec) */
+  padding-top: 109px;
+  min-height: 100vh;
+  background: #0f172a; /* identisch mit HeroSection */
+}
+
+@media (max-width: 640px) {
+  .pageWrapper {
+    padding-top: 70px; /* mobile Navbar-Höhe */
+  }
+}

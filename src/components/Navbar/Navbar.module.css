@@ -1,0 +1,139 @@
+/* ─────────────────────────────────────────────
+   Navbar.module.css
+   Figma spec:
+     padding: 50px 106px 30px 120px
+     height:  109px
+     bg:      #266AD9
+     gap:     471px  (between brand and nav)
+   ───────────────────────────────────────────── */
+
+/* ── Layout shell ────────────────────────────── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  background: #266AD9;
+  height: 109px;
+
+  /* Smooth hide/show via translateY */
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s ease,
+              background 0.35s ease;
+
+  /* Prevent flash of unstyled content */
+  will-change: transform;
+}
+
+/* ── Scroll states ───────────────────────────── */
+.visible {
+  transform: translateY(0);
+}
+
+.hidden {
+  transform: translateY(-100%);
+}
+
+/* Subtle elevation once user has scrolled away from top */
+.atTop {
+  box-shadow: none;
+}
+
+.scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Inner container (Figma: padding 50/106/30/120) ── */
+.inner {
+  padding: 50px 106px 30px 120px;
+  height: 100%;
+
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+
+/* ── Nav list ────────────────────────────────── */
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.2rem;         /* spacing between individual links */
+  flex-shrink: 0;
+}
+
+/* ── Nav links ───────────────────────────────── */
+.navLink {
+  /* Figma: Menu name */
+  font-family: 'Quicksand', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 120%;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.navLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* ── Responsive ──────────────────────────────── */
+
+/* Tablet: reduce gap and padding proportionally */
+@media (max-width: 1280px) {
+  .inner {
+    gap: 3rem;
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .inner {
+    gap: 1.5rem;
+    padding: 0 2rem;
+    justify-content: space-between;
+  }
+
+  .navList {
+    gap: 1.4rem;
+  }
+}
+
+/* Mobile: stack brand left, nav right (compact) */
+@media (max-width: 640px) {
+  .header {
+    height: 70px;
+  }
+
+  .inner {
+    padding: 0 1.25rem;
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  .navList {
+    gap: 1rem;
+  }
+
+  .navLink {
+    font-size: 0.875rem;
+  }
+}

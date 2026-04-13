@@ -1,0 +1,8 @@
+{
+  "label": "OWASP Juice-Shop",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "projects/OWASP Juice-Shop/juice-shop"
+  }
+}

@@ -178,7 +178,7 @@ cat ~/.ssh/github.pub
 
 ### 4.3 Copy public key to github 
 GitHub → Settings → SSH and GPG keys → New SSH key
-![Adding Public Key in GitHub](images/github-public-key.png)
+![Adding Public Key in GitHub](./github-public-key.png)
 
 
 ### 4.4 Configure ssh on your server with your new key
@@ -210,34 +210,3 @@ Hi <GitHub-Username>! You've successfully authenticated, but GitHub does not pro
 
 Your server is now securely configured and ready for use.  
 You’re all set for deploying projects, managing code via GitHub, and continuing your DevSecOps journey. Great job!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ## Quickstart
-
-1. Create a SSH key pair on your local machine
-2. Login via `ssh` using your username and designated password
-3. Add your public SSH-Keys to the V-Servers `authorized_keys` with the following command:
-   1. `ssh-copy-id -i $HOME/.ssh/your-public-key.pub <user>@123.4.5.255`
-4. Logout from Server, try logging in with the KEY information only -> `ssh -i <path/to/key> user@host`
-   1. You should not be prompted for a password if it works correctly
-5. Log in to the V-Server again
-6. Disable Password-Login
-7. Disable Root-Login
-
-## Description
-
-
-
-## Further References -->

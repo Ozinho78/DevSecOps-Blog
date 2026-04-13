@@ -5,8 +5,11 @@
 > **Tools:** Burp Suite Intruder, Browser DevTools, CrackStation  
 > **Video:** ▶ [Watch on Loom](https://www.loom.com/share/3ca7822675a14947b8f5d71addeef80b)
 
-> [!IMPORTANT]
-> ⚠️ **Educational Disclaimer:** All techniques demonstrated here are performed in a controlled, legal environment using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods against real systems without written authorization.
+:::warning[Educational Disclaimer]
+⚠️ All techniques demonstrated here are performed in a controlled, legal environment
+using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods
+against real systems without written authorization.
+:::
 
 ---
 

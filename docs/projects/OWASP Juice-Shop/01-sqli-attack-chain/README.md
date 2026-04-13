@@ -5,8 +5,11 @@
 > **Tools:** sqlmap, Burp Suite Repeater  
 > **Video:** ▶ [Watch on Loom](https://www.loom.com/share/0667a685bc41424b9b4f2e1f9b388556)
 
-> [!IMPORTANT]
-> ⚠️ **Educational Disclaimer:** All techniques demonstrated here are performed in a controlled, legal environment using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods against real systems without written authorization.
+:::warning[Educational Disclaimer]
+⚠️ All techniques demonstrated here are performed in a controlled, legal environment
+using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods
+against real systems without written authorization.
+:::
 
 ---
 

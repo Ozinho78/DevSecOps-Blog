@@ -5,8 +5,11 @@
 > **Tools:** ExifTool, Burp Suite Repeater, SecLists  
 > **Video:** ▶ [Watch on Loom](https://www.loom.com/share/76cf2df520c34444bfe51b0cccd0d7c5)
 
-> [!IMPORTANT]
-> ⚠️ **Educational Disclaimer:** All techniques demonstrated here are performed in a controlled, legal environment using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods against real systems without written authorization.
+:::warning[Educational Disclaimer]
+⚠️ All techniques demonstrated here are performed in a controlled, legal environment
+using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods
+against real systems without written authorization.
+:::
 
 ---
 

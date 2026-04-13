@@ -5,8 +5,11 @@
 > **Tools:** Burp Suite Repeater, Python 3  
 > **Video:** ▶ [Watch on Loom](https://www.loom.com/share/99e9fbe8cf0249639d94a0a89b6cff0c)
 
-> [!IMPORTANT]
-> ⚠️ **Educational Disclaimer:** All techniques demonstrated here are performed in a controlled, legal environment using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods against real systems without written authorization.
+:::warning[Educational Disclaimer]
+⚠️ All techniques demonstrated here are performed in a controlled, legal environment
+using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods
+against real systems without written authorization.
+:::
 
 ---
 

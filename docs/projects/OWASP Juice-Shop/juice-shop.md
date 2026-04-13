@@ -2,8 +2,11 @@
 
 This repository documents the exploitation of intentional security vulnerabilities in the [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/), a deliberately insecure web application designed for security training. All challenges were performed against a local Docker instance on a controlled environment. The content of this documentation is for **educational purposes only** — do not apply these techniques against systems you do not own or have explicit permission to test.
 
-> [!IMPORTANT]
-> ⚠️ **Educational Disclaimer:** All techniques demonstrated here are performed in a controlled, legal environment using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods against real systems without written authorization.
+:::warning[Educational Disclaimer]
+⚠️ All techniques demonstrated here are performed in a controlled, legal environment
+using OWASP Juice Shop, which is intentionally vulnerable. Never use these methods
+against real systems without written authorization.
+:::
 
 ---
 

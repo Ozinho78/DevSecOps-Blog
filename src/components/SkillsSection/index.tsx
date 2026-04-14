@@ -6,11 +6,11 @@ const ROWS = [
   [
     { label: 'HTML',                  icon: '/img/HTML.png'           },
     { label: 'CSS',                   icon: '/img/CSS.png'            },
-    { label: 'Static site generator', icon: '/img/Docusaurier.png'     },
+    { label: 'Static site\ngenerator', icon: '/img/Docusaurier.png'     },
   ],
   [
     { label: 'Python',                icon: '/img/Python.png'         },
-    { label: 'Shell scripting',       icon: '/img/Terminal.png'          },
+    { label: 'Shell\nscripting',       icon: '/img/Terminal.png'          },
     { label: 'Yaml',                  icon: '/img/YAML.png'           },
   ],
   [

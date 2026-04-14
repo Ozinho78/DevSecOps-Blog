@@ -9,13 +9,13 @@ const ROWS = [
     { label: 'Static site\ngenerator', icon: '/img/Docusaurier.png'     },
   ],
   [
-    { label: 'Python',                icon: '/img/Python.png'         },
+    { label: 'Python',                icon: '/img/python.png'         },
     { label: 'Shell\nscripting',       icon: '/img/Terminal.png'          },
     { label: 'Yaml',                  icon: '/img/YAML.png'           },
   ],
   [
     { label: 'Container',             icon: '/img/Docker.png'         },
-    { label: 'CI/CD with\nGitHub Actions', icon: '/img/GithubActions.png' },
+    { label: 'CI/CD with\nGitHub Actions', icon: '/img/githubactions.png' },
     { label: 'IT Security',           icon: '/img/IT-Security.png'    },
   ],
 ];

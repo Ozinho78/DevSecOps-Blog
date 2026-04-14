@@ -1,0 +1,141 @@
+/* ── Section ─────────────────────────────────── */
+.section {
+  background: #0f172a;
+  padding: 72px 2rem;
+}
+
+/* ── Inner wrapper ───────────────────────────── */
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  /* 2-Spalten-Grid: linke Spalte breit, rechte schmal */
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  grid-template-rows: auto auto;
+  column-gap: 50px;
+  row-gap: 24px;
+}
+
+/* ── Titel (links, oben) ─────────────────────── */
+.title {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 120%;
+  color: #ffffff;
+  margin: 0;
+  align-self: end;   /* bündig zur Unterkante des Subtitels */
+}
+
+/* ── Subtitle (rechts, oben) ─────────────────── */
+.subTitle {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 120%;
+  color: #ffffff;
+  margin: 0;
+  align-self: end;   /* am unteren Rand der Titelzeile ausrichten */
+}
+
+/* ── Info-Text (links, unten) ────────────────── */
+.infoText {
+  grid-column: 1;
+  grid-row: 2;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  text-align: justify;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ── Kontakt-Links (rechts, unten) ───────────── */
+.contacts {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* ── Einzelne Kontakt-Zeile ──────────────────── */
+.contactRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ── Icons ───────────────────────────────────── */
+.iconMail {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: #266AD9;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconLinkedIn {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: #266AD9;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconMail svg,
+.iconLinkedIn svg {
+  width: 18px;
+  height: 18px;
+  fill: #ffffff;
+}
+
+/* ── Links ───────────────────────────────────── */
+.contactLink {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.contactLinkUnderline {
+  text-decoration: underline;
+}
+
+.contactLink:hover {
+  opacity: 0.75;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  .title    { grid-column: 1; grid-row: 1; }
+  .subTitle { grid-column: 1; grid-row: 2; font-size: 18px; }
+  .infoText { grid-column: 1; grid-row: 3; }
+  .contacts { grid-column: 1; grid-row: 4; }
+}

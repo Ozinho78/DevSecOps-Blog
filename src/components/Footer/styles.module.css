@@ -1,0 +1,71 @@
+/* ── Footer ──────────────────────────────────── */
+.footer {
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 0;
+  gap: 80px;
+}
+
+/* ── Scroll-to-top button (Figma spec) ───────── */
+.arrowBtn {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;   /* Pfeil sitzt unten im Button */
+  padding: 20px 0;         /* nur vertikales Padding – horizontal kein Platz bei 40px */
+  width: 40px;
+  height: 90px;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
+  background: transparent;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.arrowBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px);
+}
+
+/* ── Pfeil-SVG ───────────────────────────────── */
+.arrowIcon {
+  width: 12px;
+  height: 100%;
+  display: block;
+}
+
+/* ── Copyright + Legal notice ────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.copyright {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: #ffffff;
+  margin: 0;
+}
+
+.legal {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: #F8F5EC;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.legal:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}

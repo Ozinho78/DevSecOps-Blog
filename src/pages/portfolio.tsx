@@ -1,9 +1,10 @@
 import React, { JSX } from 'react';
+import PortfolioLayout from '../components/PortfolioLayout';
 import HeroSection from '../components/HeroSection';
 import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
-import PortfolioLayout from '../components/PortfolioLayout';
+import Footer from '../components/Footer';
 
 export default function Portfolio(): JSX.Element {
   return (
@@ -15,9 +16,10 @@ export default function Portfolio(): JSX.Element {
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />
-      <footer className="custom-footer">
+      {/* <footer className="custom-footer">
         © Michael Fiebelkorn 2026 · Legal Notice
-      </footer>
+      </footer> */}
+      <Footer />
     </PortfolioLayout>
   );
 }

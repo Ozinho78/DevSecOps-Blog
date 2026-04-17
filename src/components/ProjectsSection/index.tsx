@@ -123,7 +123,7 @@ const FALLBACK: Project = {
 };
 
 export default function ProjectsSection(): JSX.Element {
-  const [activeId, setActiveId] = useState<number>(4);
+  const [activeId, setActiveId] = useState<number>(3);
   const featured = FEATURED_DATA[activeId] ?? FALLBACK;
 
   return (

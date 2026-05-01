@@ -1,8 +1,6 @@
 import React, { JSX } from 'react';
 import styles from './styles.module.css';
 
-// Skill-Daten – icon verweist auf static/img/
-// desc erscheint auf der Rückseite beim Hover
 const ROWS = [
   [
     {
@@ -62,21 +60,21 @@ export default function SkillsSection(): JSX.Element {
     <section className={styles.section} id="skills">
       <div className={styles.inner}>
 
-        {/* Headline */}
+
         <div className={styles.headline}>
           <h2 className={styles.title}>My skills</h2>
         </div>
 
-        {/* Card grid – 3 rows × 3 cards */}
+
         <div className={styles.content}>
           {ROWS.map((row, rowIdx) => (
             <div className={styles.row} key={rowIdx}>
               {row.map(({ label, icon, desc }) => (
                 <div className={styles.card} key={label}>
-                  {/* cardInner dreht sich beim Hover */}
+
                   <div className={styles.cardInner}>
 
-                    {/* Vorderseite */}
+
                     <div className={styles.cardFront}>
                       <img
                         className={styles.icon}
@@ -94,7 +92,7 @@ export default function SkillsSection(): JSX.Element {
                       </span>
                     </div>
 
-                    {/* Rückseite */}
+
                     <div className={styles.cardBack}>
                       <span className={styles.backTitle}>
                         {label.split('\n').join(' ')}

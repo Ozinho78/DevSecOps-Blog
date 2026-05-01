@@ -9,7 +9,7 @@ const PROJECTS = [
   { id: 5, name: "WordPress" },
 ];
 
-// ── Tag definitions (icons aus static/img/) ──────────────
+
 const T = {
   docker: { label: "Docker", icon: "/img/Docker.png" },
   python: { label: "Python", icon: "/img/python.png" },
@@ -132,7 +132,7 @@ export default function ProjectsSection(): JSX.Element {
         <h2 className={styles.title}>My project highlights</h2>
 
         <div className={styles.content}>
-          {/* Left: numbered list */}
+
           <div className={styles.list}>
             <ol className={styles.projectList}>
               {PROJECTS.map(({ id, name }) => (
@@ -158,7 +158,7 @@ export default function ProjectsSection(): JSX.Element {
             </a>
           </div>
 
-          {/* Right: featured card */}
+
           <div className={styles.card}>
             <div className={styles.cardHeader}>
               <h3 className={styles.cardTitle}>{featured.title}</h3>

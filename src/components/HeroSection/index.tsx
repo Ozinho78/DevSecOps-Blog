@@ -6,17 +6,17 @@ export default function HeroSection(): JSX.Element {
     <section className={styles.section} id="about">
       <div className={styles.inner}>
 
-        {/* ── Text column ─────────────────────── */}
+        
         <div className={styles.textBlock}>
 
-          {/* Name + title group */}
+        
           <div className={styles.nameGroup}>
             <p className={styles.greeting}>Hey there 👋 I am</p>
             <h1 className={styles.name}>Michael Fiebelkorn</h1>
             <p className={styles.title}>DevSecOps Engineer</p>
           </div>
 
-          {/* Description */}
+        
           <p className={styles.description}>
             I work as an IT System Engineer with a focus on Networking,
             Firewalling and Troubleshooting. My passion for automation and
@@ -25,7 +25,7 @@ export default function HeroSection(): JSX.Element {
             making infrastructure and code equally secure and maintainable.
           </p>
 
-          {/* CTA */}
+        
           <div className={styles.ctaWrapper}>
             <a className={styles.cta} href="#contact">
               <span className={styles.ctaLabel}>Contact me</span>
@@ -34,7 +34,7 @@ export default function HeroSection(): JSX.Element {
 
         </div>
 
-        {/* ── Photo ───────────────────────────── */}
+        
         <img
           className={styles.photo}
           src="/img/profile.png"

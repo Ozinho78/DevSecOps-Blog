@@ -9,16 +9,13 @@ export default function Footer(): JSX.Element {
 
   return (
     <footer className={styles.footer}>
-      {/* ── Scroll-to-top button ──────────────
-          Figma: justify-content flex-end + align-items flex-end
-          → Pfeil sitzt unten-rechts im hohen Pill-Button          */}
       <a
         href="#about"
         className={styles.arrowBtn}
         onClick={scrollToTop}
         aria-label="Back to top"
       >
-        {/* Pfeil nach oben: Linie + Spitze oben */}
+        
         <svg
           className={styles.arrowIcon}
           viewBox="0 0 12 50"
@@ -26,7 +23,7 @@ export default function Footer(): JSX.Element {
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
-          {/* Senkrechte Linie */}
+          
           <line
             x1="6"
             y1="50"
@@ -36,7 +33,7 @@ export default function Footer(): JSX.Element {
             strokeWidth="2"
             strokeLinecap="round"
           />
-          {/* Linker Schenkel der Pfeilspitze */}
+         
           <line
             x1="6"
             y1="4"
@@ -46,7 +43,7 @@ export default function Footer(): JSX.Element {
             strokeWidth="2"
             strokeLinecap="round"
           />
-          {/* Rechter Schenkel der Pfeilspitze */}
+         
           <line
             x1="6"
             y1="4"
@@ -59,7 +56,7 @@ export default function Footer(): JSX.Element {
         </svg>
       </a>
 
-      {/* ── Copyright + Legal ──────────────── */}
+      
       <div className={styles.content}>
         <p className={styles.copyright}>© Michael Fiebelkorn 2026</p>
         <a href="/legal-notice" className={styles.legal} target="_blank">

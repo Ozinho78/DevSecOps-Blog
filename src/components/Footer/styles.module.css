@@ -1,4 +1,4 @@
-/* ── Footer ──────────────────────────────────── */
+
 .footer {
   background: #0f172a;
   display: flex;
@@ -8,14 +8,14 @@
   gap: 80px;
 }
 
-/* ── Scroll-to-top button (Figma spec) ───────── */
+
 .arrowBtn {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-end;   /* Pfeil sitzt unten im Button */
-  padding: 20px 0;         /* nur vertikales Padding – horizontal kein Platz bei 40px */
+  align-items: flex-end;   
+  padding: 20px 0;         
   width: 40px;
   height: 90px;
   border: 1px solid #ffffff;
@@ -31,14 +31,14 @@
   transform: translateY(-4px);
 }
 
-/* ── Pfeil-SVG ───────────────────────────────── */
+
 .arrowIcon {
   width: 12px;
   height: 100%;
   display: block;
 }
 
-/* ── Copyright + Legal notice ────────────────── */
+
 .content {
   display: flex;
   flex-direction: column;

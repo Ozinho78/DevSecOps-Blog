@@ -17,8 +17,7 @@ export default function Navbar(): JSX.Element {
     const onScroll = () => {
       const currentY = window.scrollY;
 
-      // Hide when scrolling DOWN past 80 px threshold
-      // Show when scrolling UP OR at very top
+      
       if (currentY < 80) {
         setHidden(false);
         setAtTop(true);
@@ -44,7 +43,7 @@ export default function Navbar(): JSX.Element {
       role="banner"
     >
       <div className={styles.inner}>
-        {/* Navigation */}
+        
         <nav aria-label="Main navigation">
           <ul className={styles.navList} role="list">
             {NAV_LINKS.map(({ label, href }) => (

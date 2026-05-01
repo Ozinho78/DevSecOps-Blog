@@ -14,7 +14,7 @@ export default function LegalNotice(): JSX.Element {
         <body className="legal-page" />
       </Head>
 
-      {/* Docusaurus Navbar + Footer auf dieser Route ausblenden */}
+      
       <style>{`
         body.legal-page .navbar,
         body.legal-page .navbar-sidebar,
@@ -191,7 +191,7 @@ export default function LegalNotice(): JSX.Element {
             </P>
           </Section>
 
-          {/* Source + back */}
+          
           <p style={{ color: '#475569', fontSize: '14px', marginTop: '64px', borderTop: '1px solid #1e293b', paddingTop: '24px' }}>
             Source: <a href="https://www.e-recht24.de" target="_blank" rel="noreferrer" style={{ color: '#475569' }}>https://www.e-recht24.de</a>
             {' · '}
@@ -204,7 +204,7 @@ export default function LegalNotice(): JSX.Element {
   );
 }
 
-/* ── Kleine Hilfs-Komponenten für sauberes Markup ── */
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section style={{ marginBottom: '48px' }}>

@@ -6,13 +6,13 @@ export default function ContactSection(): JSX.Element {
     <section className={styles.section} id="contact">
       <div className={styles.inner}>
 
-        {/* Spalte 1, Zeile 1: Titel */}
+        
         <h2 className={styles.title}>Contact me</h2>
 
-        {/* Spalte 2, Zeile 1: Subtitle */}
+        
         <p className={styles.subTitle}>Looking forward to hearing from you!</p>
 
-        {/* Spalte 1, Zeile 2: Info-Text */}
+        
         <p className={styles.infoText}>
           Feel free to reach out with job offers or opportunities. I am open
           to roles in Networking, Firewalling, and DevSecOps — both on-site
@@ -22,10 +22,10 @@ export default function ContactSection(): JSX.Element {
           to have a conversation.
         </p>
 
-        {/* Spalte 2, Zeile 2: Kontakt-Links */}
+        
         <div className={styles.contacts}>
 
-          {/* E-Mail */}
+        
           <div className={styles.contactRow}>
             <div className={styles.iconMail}>
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@ export default function ContactSection(): JSX.Element {
             </a>
           </div>
 
-          {/* LinkedIn */}
+        
           <div className={styles.contactRow}>
             <div className={styles.iconLinkedIn}>
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

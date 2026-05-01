@@ -1,10 +1,10 @@
-/* ── Section ─────────────────────────────────── */
+
 .section {
   background: #266AD9;
   padding: 72px 2rem;
 }
 
-/* ── Inner wrapper ───────────────────────────── */
+
 .inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -15,7 +15,7 @@
   gap: 64px;
 }
 
-/* ── Headline ────────────────────────────────── */
+
 .title {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -25,7 +25,7 @@
   margin: 0;
 }
 
-/* ── Content row ─────────────────────────────── */
+
 .content {
   display: flex;
   flex-direction: row;
@@ -35,7 +35,7 @@
   width: 100%;
 }
 
-/* ── Left: project list ──────────────────────── */
+
 .list {
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@
   opacity: 0.75;
 }
 
-/* Active / selected item */
+
 .projectItemActive {
   font-weight: 600;
   color: #262E34;
@@ -97,7 +97,7 @@
   opacity: 0.75;
 }
 
-/* ── Right: project card ─────────────────────── */
+
 .card {
   display: flex;
   flex-direction: column;
@@ -111,7 +111,7 @@
   box-sizing: border-box;
 }
 
-/* ── Card header: title + tech tags ──────────── */
+
 .cardHeader {
   display: flex;
   flex-direction: row;
@@ -131,7 +131,7 @@
   flex-shrink: 0;
 }
 
-/* ── Tech tags ───────────────────────────────── */
+
 .tags {
   display: flex;
   flex-direction: row;
@@ -167,7 +167,7 @@
   white-space: nowrap;
 }
 
-/* ── Card body: image + text + buttons ───────── */
+
 .cardBody {
   display: flex;
   flex-direction: row;
@@ -185,7 +185,7 @@
   flex-shrink: 0;
 }
 
-/* ── Text + buttons ──────────────────────────── */
+
 .cardRight {
   display: flex;
   flex-direction: column;
@@ -205,7 +205,7 @@
   width: 100%;
 }
 
-/* ── Buttons ─────────────────────────────────── */
+
 .buttons {
   display: flex;
   flex-direction: row;
@@ -257,7 +257,7 @@
   transform: translateY(-2px);
 }
 
-/* ── Responsive ──────────────────────────────── */
+
 @media (max-width: 1024px) {
   .cardImage { width: 260px; height: 180px; }
   .cardBody  { gap: 32px; }

@@ -1,113 +1,112 @@
-
+/* ═══════════════════════════════════════════════════════
+   SECTION
+   Kein Navbar-Offset mehr hier — Docusaurus fügt dem
+   Main-Wrapper bereits padding-top für die fixe Navbar
+   hinzu. Wir brauchen nur unser eigenes inneres Padding.
+════════════════════════════════════════════════════════ */
 .section {
-  /* background: #0f172a; */
   background: #266AD9;
   display: flex;
   align-items: center;
   padding: 72px 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   INNER  –  CSS Grid (Desktop)
+   links:  nameGroup oben / contentBlock unten
+   rechts: photo (beide Zeilen, vertikal zentriert)
+════════════════════════════════════════════════════════ */
 .inner {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4rem;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr 441.62px;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "name    photo"
+    "content photo";
+  column-gap: 4rem;
+  row-gap: 40px;
 }
 
-
-.textBlock {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0;
-  gap: 40px;
-  max-width: 664px;
-  flex: 1;
-  min-width: 0;
-}
+.nameGroup    { grid-area: name;    }
+.photo        { grid-area: photo;   }
+.contentBlock { grid-area: content; }
 
 
+/* ═══════════════════════════════════════════════════════
+   NAME GROUP
+════════════════════════════════════════════════════════ */
 .nameGroup {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0;
   gap: 16px;
-  max-width: 516px;
   width: 100%;
 }
 
-
 .greeting {
   font-family: 'Quicksand', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 32px;
   line-height: 120%;
   color: #ffffff;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
   margin: 0;
 }
 
-
 .name {
   font-family: 'Quicksand', sans-serif;
-  font-style: normal;
   font-weight: 700;
   font-size: 88px;
   line-height: 120%;
   color: #ffffff;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
   margin: 0;
+  word-break: break-word;
 }
-
 
 .title {
   font-family: 'Quicksand', sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 32px;
   line-height: 120%;
   color: #ffffff;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
   margin: 0;
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   CONTENT BLOCK
+════════════════════════════════════════════════════════ */
+.contentBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
 .description {
   font-family: 'Quicksand', sans-serif;
-  font-style: normal;
   font-weight: 600;
   font-size: 22px;
   line-height: 120%;
   color: #ffffff;
   width: 100%;
-  max-width: 664px;
   margin: 0;
 }
-
 
 .ctaWrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0;
   gap: 10px;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
 }
-
 
 .cta {
   display: flex;
@@ -121,9 +120,6 @@
   background: #ffffff;
   border-radius: 30px;
   text-decoration: none !important;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
@@ -132,10 +128,8 @@
   transform: translateY(-2px);
 }
 
-
 .ctaLabel {
   font-family: 'Quicksand', sans-serif;
-  font-style: normal;
   font-weight: 600;
   font-size: 20px;
   line-height: 120%;
@@ -144,43 +138,108 @@
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   PHOTO
+   aspect-ratio statt fixer height → kein Cropping mehr.
+   Das Foto zeigt sich in seiner natürlichen Proportion.
+   object-fit: cover greift nur wenn das Bild breiter als
+   die Grid-Spalte ist – kein vertikaler Crop.
+════════════════════════════════════════════════════════ */
 .photo {
-  margin: 0 auto;
-  width: 441.62px;
-  height: 479px;
+  width: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center top;
   border-radius: 30px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+  align-self: center;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   BREAKPOINTS
+════════════════════════════════════════════════════════ */
+
+/* ─── 1100px ──────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .inner       { gap: 2.5rem; }
-  .textBlock   { width: 100%; max-width: 664px; }
-  .description { width: 100%; }
-  .name        { font-size: 64px; }
-  .photo       { width: 340px; height: 369px; }
+  .inner {
+    grid-template-columns: 1fr 340px;
+    column-gap: 2.5rem;
+  }
+  .name { font-size: 64px; }
 }
 
-@media (max-width: 768px) {
+
+/* ─── 900px: Flex-Column ──────────────────────────────── */
+@media (max-width: 900px) {
   .inner {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 24px;
   }
-  .name        { font-size: 48px; }
-  .greeting    { font-size: 22px; }
-  .title       { font-size: 22px; }
-  .description { font-size: 18px; width: 100%; }
-  .nameGroup   { width: 100%; }
-  .textBlock   { width: 100%; }
+  /* Foto auf Mobile: volle Breite bis max 441px, aspect-ratio
+     bestimmt Höhe automatisch – kein Abschneiden mehr */
   .photo {
     width: 100%;
-    max-width: 441.62px;
-    height: 340px;
-    margin: 0 auto;
+    max-width: 441px;
+    align-self: center;
   }
+  .name        { font-size: 56px; }
+  .greeting    { font-size: 26px; }
+  .title       { font-size: 26px; }
+  .description { font-size: 20px; }
+}
+
+
+/* ─── 641–768px: Navbar-Höhen-Offset-Korrektur ───────────
+   Unsere Navbar wechselt bei ≤768px auf 73px Höhe.
+   Docusaurus berechnet den Main-Wrapper padding-top aber
+   noch auf Basis der Desktop-Höhe (109px).
+   Differenz: 109 - 73 = 36px → als extra padding-top addieren.
+──────────────────────────────────────────────────────── */
+@media (min-width: 641px) and (max-width: 768px) {
+  .section { padding-top: calc(36px + 48px); }
+}
+
+/* ─── 768px: Hamburger-Navbar, weniger padding ────────── */
+@media (max-width: 768px) {
+  .section { padding: 48px 1.5rem; }
+}
+
+
+/* ─── 600px ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .name        { font-size: 48px; }
+  .greeting    { font-size: 24px; }
+  .title       { font-size: 24px; }
+  .description { font-size: 18px; }
+}
+
+
+/* ─── 430px: Figma Mobile 390px ──────────────────────── */
+@media (max-width: 430px) {
+  .inner       { gap: 24px; }
+  .name        { font-size: 48px; }
+  .greeting    { font-size: 24px; }
+  .title       { font-size: 24px; }
+  .description { font-size: 16px; font-weight: 500; }
+  /* Foto: max-width auf Figma-Spec, aspect-ratio hält Proportionen */
+  .photo       { max-width: 313px; border-radius: 20px; }
+  .cta         { width: 129px; height: 47px; }
+  .ctaLabel    { font-size: 16px; }
+}
+
+
+/* ─── 320px ───────────────────────────────────────────── */
+@media (max-width: 320px) {
+  .section     { padding: 32px 1rem; }
+  .inner       { gap: 20px; }
+  .name        { font-size: 36px; }
+  .greeting    { font-size: 18px; }
+  .title       { font-size: 18px; }
+  .description { font-size: 14px; }
+  .photo       { max-width: 100%; border-radius: 16px; }
+  .cta         { width: 100%; }
+  .ctaWrapper  { width: 100%; }
 }

@@ -2,25 +2,31 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
-    "projects/overview",
-    "projects/Baby-Tools-Shop/baby-tools-shop",
-    "projects/Conduit-Container/conduit-container",
-    "projects/Conduit-Deployment/conduit-deployment",
-    "projects/Minecraft/minecraft",
     {
       type: "category",
-      label: "OWASP Juice Shop",
+      label: "Projects",
+      link: { type: "doc", id: "projects/overview" },
       items: [
-        "projects/OWASP-Juice-Shop/juice-shop",
-        "projects/OWASP-Juice-Shop/sqli-attack-chain/README",
-        "projects/OWASP-Juice-Shop/admin-takeover/README",
-        "projects/OWASP-Juice-Shop/osint-chain/README",
-        "projects/OWASP-Juice-Shop/captcha-bypass/README",
+        "projects/Baby-Tools-Shop/baby-tools-shop",
+        "projects/Conduit-Container/conduit-container",
+        "projects/Conduit-Deployment/conduit-deployment",
+        "projects/Minecraft/minecraft",
+        {
+          type: "category",
+          label: "OWASP Juice Shop",
+          items: [
+            "projects/OWASP-Juice-Shop/juice-shop",
+            "projects/OWASP-Juice-Shop/sqli-attack-chain/README",
+            "projects/OWASP-Juice-Shop/admin-takeover/README",
+            "projects/OWASP-Juice-Shop/osint-chain/README",
+            "projects/OWASP-Juice-Shop/captcha-bypass/README",
+          ],
+        },
+        "projects/Truck-Signs-API/truck-signs-api",
+        "projects/V-Server Setup/vserver-setup",
+        "projects/Wordpress/wordpress",
       ],
     },
-    "projects/Truck-Signs-API/truck-signs-api",
-    "projects/V-Server Setup/vserver-setup",
-    "projects/Wordpress/wordpress",
   ],
 };
 

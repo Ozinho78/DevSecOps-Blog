@@ -6,13 +6,10 @@ export default function ContactSection(): JSX.Element {
     <section className={styles.section} id="contact">
       <div className={styles.inner}>
 
-        
         <h2 className={styles.title}>Contact me</h2>
 
-        
         <p className={styles.subTitle}>Looking forward to hearing from you!</p>
 
-        
         <p className={styles.infoText}>
           Feel free to reach out with job offers or opportunities. I am open
           to roles in Networking, Firewalling, and DevSecOps — both on-site
@@ -22,25 +19,18 @@ export default function ContactSection(): JSX.Element {
           to have a conversation.
         </p>
 
-        
         <div className={styles.contacts}>
-
-        
           <div className={styles.contactRow}>
             <div className={styles.iconMail}>
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
               </svg>
             </div>
-            <a
-              href="mailto:kontakt@michael-fiebelkorn.de"
-              className={styles.contactLink}
-            >
+            <a href="mailto:kontakt@michael-fiebelkorn.de" className={styles.contactLink}>
               kontakt@michael-fiebelkorn.de
             </a>
           </div>
 
-        
           <div className={styles.contactRow}>
             <div className={styles.iconLinkedIn}>
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -50,14 +40,13 @@ export default function ContactSection(): JSX.Element {
             <a
               href="https://www.linkedin.com/in/michael-fiebelkorn-4099a177/"
               className={`${styles.contactLink} ${styles.contactLinkUnderline}`}
-              target="_blank"
-              rel="noreferrer"
+              target="_blank" rel="noreferrer"
             >
               Profile Page
             </a>
           </div>
-
         </div>
+
       </div>
     </section>
   );

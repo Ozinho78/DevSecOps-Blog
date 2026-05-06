@@ -7,10 +7,8 @@
   left: 0;
   right: 0;
   z-index: 100;
-
   background: #266AD9;
   height: 109px;
-
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.35s ease,
               background 0.35s ease;
@@ -19,7 +17,6 @@
 
 .visible { transform: translateY(0); }
 .hidden  { transform: translateY(-100%); }
-
 .atTop    { box-shadow: none; }
 .scrolled { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25); }
 
@@ -33,7 +30,6 @@
   max-width: 1440px;
   margin: 0 auto;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -66,11 +62,7 @@
   text-decoration: none;
 }
 
-.navLink:hover {
-  opacity: 0.75;
-  transition: opacity 0.2s ease;
-}
-
+.navLink:hover         { opacity: 0.75; transition: opacity 0.2s ease; }
 .navLink:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.7);
   outline-offset: 4px;
@@ -79,7 +71,7 @@
 
 
 /* ═══════════════════════════════════════════════════════
-   HAMBURGER BUTTON  (nur Mobile sichtbar)
+   HAMBURGER
 ════════════════════════════════════════════════════════ */
 .hamburger {
   display: none;
@@ -104,9 +96,15 @@
 
 /* ═══════════════════════════════════════════════════════
    MOBILE OVERLAY
-   z-index: 9999 – liegt über Docusaurus Production-Wrappern
-   und deren Stacking Contexts (--ifm-z-index-fixed: 200).
+   Kein opacity/visibility-Toggle mehr — das Overlay wird
+   per React konditionell gerendert (menuOpen ? <Overlay/> : null).
+   Fade-in via @keyframes direkt beim Mount des Elements.
 ════════════════════════════════════════════════════════ */
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -119,25 +117,17 @@
   align-items: center;
   justify-content: center;
 
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
-}
-
-.overlayOpen {
-  opacity: 1;
-  visibility: visible;
+  /* Fade-in beim Einblenden, kein Fade-out nötig da unmount sofort */
+  animation: overlayFadeIn 0.2s ease forwards;
 }
 
 .closeBtn {
   position: absolute;
   top: 28px;
   right: 28px;
-
   background: transparent;
   border: none;
   cursor: pointer;
-
   font-size: 28px;
   font-weight: 400;
   color: #266AD9;
@@ -183,12 +173,7 @@
 
 @media (max-width: 768px) {
   .header { height: 73px; }
-
-  .inner {
-    padding: 0 2rem;
-    justify-content: flex-end;
-  }
-
+  .inner  { padding: 0 2rem; justify-content: flex-end; }
   .desktopNav { display: none; }
   .hamburger  { display: flex; }
 }

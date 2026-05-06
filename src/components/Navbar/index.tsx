@@ -13,13 +13,11 @@ export default function Navbar(): JSX.Element {
   const [hidden,   setHidden]   = useState(false);
   const [atTop,    setAtTop]    = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-  // Stellt sicher dass Portal erst nach dem Mount gerendert wird (SSR-safe)
   const [mounted,  setMounted]  = useState(false);
   const lastScrollY             = useRef(0);
 
   useEffect(() => { setMounted(true); }, []);
 
-  /* ── Scroll-Hide-Logik ──────────────────────────────────────────── */
   useEffect(() => {
     const onScroll = () => {
       const currentY = window.scrollY;
@@ -36,7 +34,6 @@ export default function Navbar(): JSX.Element {
     return () => window.removeEventListener("scroll", onScroll);
   }, [menuOpen]);
 
-  /* ── Scroll-Lock ────────────────────────────────────────────────── */
   useEffect(() => {
     document.documentElement.style.overflow = menuOpen ? "hidden" : "";
     document.body.style.overflow            = menuOpen ? "hidden" : "";
@@ -49,16 +46,15 @@ export default function Navbar(): JSX.Element {
   const closeMenu = () => setMenuOpen(false);
 
   /*
-   * Overlay als Portal direkt in document.body –
-   * dadurch liegt es außerhalb von #__docusaurus und dessen
-   * potenziellem Containing Block (transform/perspective in Production).
-   * position: fixed funktioniert damit garantiert relativ zum Viewport.
+   * Overlay: konditionelles Rendering statt CSS-Klassen-Toggle.
+   * Wenn menuOpen=false ist das Overlay nicht im DOM →
+   * kein CSS-State, kein Visibility-Bug in Production.
+   * Fade-in via CSS @keyframes auf dem Element selbst.
    */
-  const overlay = (
+  const overlay = menuOpen ? (
     <div
       id="mobile-menu"
-      className={[styles.overlay, menuOpen ? styles.overlayOpen : ""].join(" ")}
-      aria-hidden={!menuOpen}
+      className={styles.overlay}
       role="dialog"
       aria-modal="true"
       aria-label="Navigation menu"
@@ -70,16 +66,11 @@ export default function Navbar(): JSX.Element {
       >
         ✕
       </button>
-
       <nav aria-label="Mobile navigation">
         <ul className={styles.overlayList} role="list">
           {NAV_LINKS.map(({ label, href }) => (
             <li key={href}>
-              <a
-                href={href}
-                className={styles.overlayLink}
-                onClick={closeMenu}
-              >
+              <a href={href} className={styles.overlayLink} onClick={closeMenu}>
                 {label}
               </a>
             </li>
@@ -87,20 +78,19 @@ export default function Navbar(): JSX.Element {
         </ul>
       </nav>
     </div>
-  );
+  ) : null;
 
   return (
     <>
       <header
         className={[
           styles.header,
-          hidden   ? styles.hidden   : styles.visible,
-          atTop    ? styles.atTop    : styles.scrolled,
+          hidden ? styles.hidden : styles.visible,
+          atTop  ? styles.atTop  : styles.scrolled,
         ].join(" ")}
         role="banner"
       >
         <div className={styles.inner}>
-
           <nav aria-label="Main navigation" className={styles.desktopNav}>
             <ul className={styles.navList} role="list">
               {NAV_LINKS.map(({ label, href }) => (
@@ -122,11 +112,9 @@ export default function Navbar(): JSX.Element {
             <span className={styles.bar} />
             <span className={styles.bar} />
           </button>
-
         </div>
       </header>
 
-      {/* Portal: rendert außerhalb von #__docusaurus direkt in body */}
       {mounted && ReactDOM.createPortal(overlay, document.body)}
     </>
   );

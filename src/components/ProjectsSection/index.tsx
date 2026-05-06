@@ -2,40 +2,33 @@ import React, { JSX, useState } from "react";
 import styles from "./styles.module.css";
 
 const PROJECTS = [
-  { id: 1, name: "Baby Tools Shop" },
-  { id: 2, name: "Truck Signs API" },
+  { id: 1, name: "Baby Tools Shop"  },
+  { id: 2, name: "Truck Signs API"  },
   { id: 3, name: "OWASP Juice Shop" },
-  { id: 4, name: "Minecraft" },
-  { id: 5, name: "WordPress" },
+  { id: 4, name: "Minecraft"        },
+  { id: 5, name: "WordPress"        },
 ];
 
+// Reihenfolge der Mobile-Highlight-Cards: Juice Shop, Minecraft, Truck Signs
+const MOBILE_HIGHLIGHT_IDS = [3, 4, 2];
 
 const T = {
-  docker: { label: "Docker", icon: "/img/Docker.png" },
-  python: { label: "Python", icon: "/img/python.png" },
-  shell: { label: "Shell", icon: "/img/Terminal.png" },
-  yaml: { label: "YAML", icon: "/img/YAML.png" },
+  docker:   { label: "Docker",      icon: "/img/Docker.png"      },
+  python:   { label: "Python",      icon: "/img/python.png"      },
+  shell:    { label: "Shell",       icon: "/img/Terminal.png"    },
+  yaml:     { label: "YAML",        icon: "/img/YAML.png"        },
   security: { label: "IT Security", icon: "/img/IT-Security.png" },
 };
 
-interface Tag {
-  label: string;
-  icon: string;
-}
+interface Tag     { label: string; icon: string; }
 interface Project {
-  id: number;
-  title: string;
-  image: string;
-  tags: Tag[];
-  description: string;
-  docsUrl: string;
-  githubUrl: string;
+  id: number; title: string; image: string;
+  tags: Tag[]; description: string; docsUrl: string; githubUrl: string;
 }
 
 const FEATURED_DATA: Record<number, Project> = {
   1: {
-    id: 1,
-    title: "Baby Tools Shop",
+    id: 1, title: "Baby Tools Shop",
     image: "/img/baby-tools.png",
     tags: [T.python, T.docker, T.shell],
     description:
@@ -43,15 +36,11 @@ const FEATURED_DATA: Record<number, Project> = {
       "Django Admin integration. Containerized with Docker Compose including automated migrations, " +
       "static-file collection, and persistent volumes. A demo-data script populates the database " +
       "instantly for testing purposes.",
-    docsUrl:
-      "https://devsecops.michael-fiebelkorn.de/docs/projects/Baby-Tools-Shop/",
-    githubUrl:
-      "https://github.com/Ozinho78/baby-tools-shop/tree/feature/containerizing",
+    docsUrl:   "https://devsecops.michael-fiebelkorn.de/docs/projects/Baby-Tools-Shop/",
+    githubUrl: "https://github.com/Ozinho78/baby-tools-shop/tree/feature/containerizing",
   },
-
   2: {
-    id: 2,
-    title: "Truck Signs API",
+    id: 2, title: "Truck Signs API",
     image: "/img/truck-signs-api.png",
     tags: [T.python, T.docker, T.shell, T.security],
     description:
@@ -59,15 +48,11 @@ const FEATURED_DATA: Record<number, Project> = {
       "Integrates PostgreSQL as the database backend, Stripe for payment processing, and Gmail for " +
       "transactional email. Security best practices applied throughout: environment-based secrets, " +
       "DEBUG=False in production, and strict dev/prod separation.",
-    docsUrl:
-      "https://devsecops.michael-fiebelkorn.de/docs/projects/Truck-Signs-API/",
-    githubUrl:
-      "https://github.com/Ozinho78/truck_signs_api/tree/feature/api-containerization",
+    docsUrl:   "https://devsecops.michael-fiebelkorn.de/docs/projects/Truck-Signs-API/",
+    githubUrl: "https://github.com/Ozinho78/truck_signs_api/tree/feature/api-containerization",
   },
-
   3: {
-    id: 3,
-    title: "OWASP Juice Shop",
+    id: 3, title: "OWASP Juice Shop",
     image: "/img/owasp-juice-shop.png",
     tags: [T.security, T.docker, T.python],
     description:
@@ -75,15 +60,11 @@ const FEATURED_DATA: Record<number, Project> = {
       "Attack chains covered: SQL Injection, broken authentication, OSINT-based account takeover via EXIF " +
       "metadata, and CAPTCHA bypass with Python scripting. Every challenge is documented with a full " +
       "writeup and a Loom video walkthrough.",
-    docsUrl:
-      "https://devsecops.michael-fiebelkorn.de/docs/projects/OWASP-Juice-Shop/juice-shop",
-    githubUrl:
-      "https://github.com/Ozinho78/juice-shop-writeups/tree/feature/challenge-writeups",
+    docsUrl:   "https://devsecops.michael-fiebelkorn.de/docs/projects/OWASP-Juice-Shop/juice-shop",
+    githubUrl: "https://github.com/Ozinho78/juice-shop-writeups/tree/feature/challenge-writeups",
   },
-
   4: {
-    id: 4,
-    title: "Project Minecraft",
+    id: 4, title: "Project Minecraft",
     image: "/img/minecraft-ai.png",
     tags: [T.docker, T.yaml, T.shell],
     description:
@@ -91,14 +72,11 @@ const FEATURED_DATA: Record<number, Project> = {
       "Supports fully configurable memory allocation, game mode, difficulty, and Mojang authentication " +
       "via environment variables. Designed for repeatable deployment on any Linux host with Docker " +
       "installed — zero manual server setup required.",
-    docsUrl: "https://devsecops.michael-fiebelkorn.de/docs/projects/Minecraft/",
-    githubUrl:
-      "https://github.com/Ozinho78/minecraft/tree/feature/minecraft-deployment",
+    docsUrl:   "https://devsecops.michael-fiebelkorn.de/docs/projects/Minecraft/",
+    githubUrl: "https://github.com/Ozinho78/minecraft/tree/feature/minecraft-deployment",
   },
-
   5: {
-    id: 5,
-    title: "WordPress on Docker",
+    id: 5, title: "WordPress on Docker",
     image: "/img/wordpress-ai.png",
     tags: [T.docker, T.yaml, T.shell],
     description:
@@ -106,31 +84,64 @@ const FEATURED_DATA: Record<number, Project> = {
       "Credentials are kept out of the repository via a .env file, while named volumes ensure " +
       "persistent data across container restarts. Follows Docker security best practices: no " +
       "hardcoded secrets and clean separation of configuration and runtime.",
-    docsUrl: "https://devsecops.michael-fiebelkorn.de/docs/projects/Wordpress/",
-    githubUrl:
-      "https://github.com/Ozinho78/wordpress/tree/feature/wordpress-docker-setup?tab=readme-ov-file",
+    docsUrl:   "https://devsecops.michael-fiebelkorn.de/docs/projects/Wordpress/",
+    githubUrl: "https://github.com/Ozinho78/wordpress/tree/feature/wordpress-docker-setup",
   },
 };
 
-const FALLBACK: Project = {
-  id: 0,
-  title: "Coming soon",
-  image: "/img/minecraft.png",
-  tags: [],
-  description: "Details for this project are being added.",
-  docsUrl: "#",
-  githubUrl: "#",
-};
+/* ── Wiederverwendbare Tag-Zeile ────────────────────────────────────── */
+function TagRow({ tags }: { tags: Tag[] }) {
+  return (
+    <div className={styles.tags}>
+      {tags.map(({ label, icon }) => (
+        <div className={styles.tag} key={label}>
+          <img className={styles.tagIcon} src={icon} alt={label} />
+          <span className={styles.tagLabel}>{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ── Mobile Highlight-Card ──────────────────────────────────────────── */
+function MobileCard({ project, rank }: { project: Project; rank: number }) {
+  return (
+    <div className={styles.mobileCard}>
+      <div className={styles.mobileCardHeader}>
+        <span className={styles.mobileCardRank}>{rank}.</span>
+        <h3 className={styles.mobileCardTitle}>{project.title}</h3>
+      </div>
+      <TagRow tags={project.tags} />
+      <img
+        className={styles.mobileCardImage}
+        src={project.image}
+        alt={project.title}
+      />
+      <p className={styles.mobileCardDesc}>{project.description}</p>
+      <div className={styles.buttons}>
+        <a href={project.docsUrl} className={styles.btnPrimary}
+           target="_blank" rel="noreferrer">
+          Documentation
+        </a>
+        <a href={project.githubUrl} className={styles.btnSecondary}
+           target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+      </div>
+    </div>
+  );
+}
 
 export default function ProjectsSection(): JSX.Element {
   const [activeId, setActiveId] = useState<number>(3);
-  const featured = FEATURED_DATA[activeId] ?? FALLBACK;
+  const featured = FEATURED_DATA[activeId];
 
   return (
     <section className={styles.section} id="projects">
       <div className={styles.inner}>
         <h2 className={styles.title}>My project highlights</h2>
 
+        {/* ── Desktop Layout ─────────────────────────────────────────── */}
         <div className={styles.content}>
 
           <div className={styles.list}>
@@ -151,27 +162,17 @@ export default function ProjectsSection(): JSX.Element {
             <a
               href="https://devsecops.michael-fiebelkorn.de/docs/projects/overview"
               className={styles.seeMore}
-              target="_blank"
-              rel="noreferrer"
+              target="_blank" rel="noreferrer"
             >
               ↳ see more projects
             </a>
           </div>
 
-
           <div className={styles.card}>
             <div className={styles.cardHeader}>
               <h3 className={styles.cardTitle}>{featured.title}</h3>
-              <div className={styles.tags}>
-                {featured.tags.map(({ label, icon }) => (
-                  <div className={styles.tag} key={label}>
-                    <img className={styles.tagIcon} src={icon} alt={label} />
-                    <span className={styles.tagLabel}>{label}</span>
-                  </div>
-                ))}
-              </div>
+              <TagRow tags={featured.tags} />
             </div>
-
             <div className={styles.cardBody}>
               <img
                 className={styles.cardImage}
@@ -181,27 +182,39 @@ export default function ProjectsSection(): JSX.Element {
               <div className={styles.cardRight}>
                 <p className={styles.cardDesc}>{featured.description}</p>
                 <div className={styles.buttons}>
-                  <a
-                    href={featured.docsUrl}
-                    className={styles.btnPrimary}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <a href={featured.docsUrl} className={styles.btnPrimary}
+                     target="_blank" rel="noreferrer">
                     Documentation
                   </a>
-                  <a
-                    href={featured.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.btnSecondary}
-                  >
+                  <a href={featured.githubUrl} className={styles.btnSecondary}
+                     target="_blank" rel="noreferrer">
                     GitHub
                   </a>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
+
+        {/* ── Mobile Layout: 3 gestapelte Highlight-Cards ────────────── */}
+        <div className={styles.mobileList}>
+          {MOBILE_HIGHLIGHT_IDS.map((id, idx) => (
+            <MobileCard
+              key={id}
+              project={FEATURED_DATA[id]}
+              rank={idx + 1}
+            />
+          ))}
+          <a
+            href="https://devsecops.michael-fiebelkorn.de/docs/projects/overview"
+            className={styles.seeMore}
+            target="_blank" rel="noreferrer"
+          >
+            ↳ see more projects
+          </a>
+        </div>
+
       </div>
     </section>
   );

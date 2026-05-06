@@ -1,9 +1,7 @@
-
 .section {
   background: #266AD9;
   padding: 72px 2rem;
 }
-
 
 .inner {
   max-width: 1200px;
@@ -15,7 +13,6 @@
   gap: 64px;
 }
 
-
 .title {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -26,6 +23,9 @@
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   DESKTOP LAYOUT  (ausgeblendet auf Mobile)
+════════════════════════════════════════════════════════ */
 .content {
   display: flex;
   flex-direction: row;
@@ -34,7 +34,6 @@
   gap: 48px;
   width: 100%;
 }
-
 
 .list {
   display: flex;
@@ -56,9 +55,6 @@
 }
 
 .projectItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 24px;
@@ -68,40 +64,26 @@
   transition: opacity 0.15s ease;
 }
 
-.projectItem:hover {
-  opacity: 0.75;
-}
-
-
-.projectItemActive {
-  font-weight: 600;
-  color: #262E34;
-}
+.projectItem:hover    { opacity: 0.75; }
+.projectItemActive    { font-weight: 600; color: #262E34; }
 
 .seeMore {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 120%;
   color: #ffffff;
   text-decoration: underline;
-  cursor: pointer;
   transition: opacity 0.15s ease;
   padding-left: 4px;
 }
 
-.seeMore:hover {
-  opacity: 0.75;
-}
+.seeMore:hover { opacity: 0.75; }
 
-
+/* Featured Card */
 .card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   padding: 32px;
   gap: 32px;
   background: #2F4563;
@@ -110,7 +92,6 @@
   min-width: 0;
   box-sizing: border-box;
 }
-
 
 .cardHeader {
   display: flex;
@@ -131,43 +112,6 @@
   flex-shrink: 0;
 }
 
-
-.tags {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 6px;
-  gap: 4px;
-  background: #ffffff;
-  border-radius: 10px;
-  height: 44px;
-}
-
-.tagIcon {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
-.tagLabel {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 120%;
-  color: #262E34;
-  white-space: nowrap;
-}
-
-
 .cardBody {
   display: flex;
   flex-direction: row;
@@ -184,7 +128,6 @@
   border-radius: 30px;
   flex-shrink: 0;
 }
-
 
 .cardRight {
   display: flex;
@@ -206,11 +149,44 @@
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   SHARED: Tags + Buttons
+════════════════════════════════════════════════════════ */
+.tags {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  gap: 4px;
+  background: #ffffff;
+  border-radius: 10px;
+  height: 44px;
+}
+
+.tagIcon  { width: 32px; height: 32px; object-fit: contain; }
+
+.tagLabel {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #262E34;
+  white-space: nowrap;
+}
+
 .buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .btnPrimary {
@@ -223,17 +199,13 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  line-height: 120%;
   color: #ffffff;
   text-decoration: none !important;
   white-space: nowrap;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.btnPrimary:hover {
-  background: #1f5bbf;
-  transform: translateY(-2px);
-}
+.btnPrimary:hover  { background: #1f5bbf; transform: translateY(-2px); }
 
 .btnSecondary {
   display: flex;
@@ -245,30 +217,110 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  line-height: 120%;
   color: #ffffff;
   text-decoration: none !important;
   white-space: nowrap;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.btnSecondary:hover {
-  background: rgba(255,255,255,0.1);
-  transform: translateY(-2px);
+.btnSecondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE LAYOUT  (ausgeblendet auf Desktop)
+════════════════════════════════════════════════════════ */
+.mobileList {
+  display: none;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.mobileCard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  background: #2F4563;
+  border-radius: 30px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.mobileCardHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.mobileCardRank {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.mobileCardTitle {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 120%;
+  color: #ffffff;
+  margin: 0;
+}
+
+.mobileCardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.mobileCardDesc {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   BREAKPOINTS
+════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .cardImage { width: 260px; height: 180px; }
   .cardBody  { gap: 32px; }
 }
 
 @media (max-width: 768px) {
-  .content   { flex-direction: column; }
-  .list      { width: 100%; flex-direction: row; flex-wrap: wrap; gap: 12px; }
-  .projectList { flex-direction: row; flex-wrap: wrap; gap: 12px; }
-  .cardImage { width: 100%; height: 200px; }
-  .cardBody  { flex-direction: column; gap: 24px; }
-  .cardRight { align-items: flex-start; }
-  .cardTitle { font-size: 28px; }
+  /* Desktop aus, Mobile ein */
+  .content    { display: none; }
+  .mobileList { display: flex; }
+
+  /* inner gap auf Mobile etwas enger */
+  .inner { gap: 40px; }
+
+  /* Buttons auf Mobile volle Breite */
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btnPrimary,
+  .btnSecondary { width: 100%; font-size: 16px; }
+}
+
+@media (max-width: 430px) {
+  .section { padding: 48px 1.5rem; }
+}
+
+@media (max-width: 320px) {
+  .section { padding: 40px 1rem; }
+  .mobileCardTitle { font-size: 18px; }
+  .mobileCardDesc  { font-size: 14px; }
 }

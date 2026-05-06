@@ -1,9 +1,7 @@
-
 .section {
   background: #0f172a;
   padding: 72px 2rem;
 }
-
 
 .inner {
   max-width: 1200px;
@@ -15,12 +13,10 @@
   gap: 40px;
 }
 
-
 .headline {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0;
   gap: 16px;
 }
 
@@ -34,13 +30,15 @@
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   DESKTOP GRID  (auf Mobile ausgeblendet)
+════════════════════════════════════════════════════════ */
 .content {
   display: flex;
   flex-direction: column;
   gap: 34px;
   width: 100%;
 }
-
 
 .row {
   display: flex;
@@ -50,6 +48,58 @@
   width: 100%;
 }
 
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE CAROUSEL  (auf Desktop ausgeblendet)
+════════════════════════════════════════════════════════ */
+.carousel {
+  display: none;   /* wird per Media Query eingeblendet */
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+
+.carouselSlide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Dots */
+.dots {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.dotActive {
+  background: #ffffff;
+  transform: scale(1.25);
+}
+
+.dot:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   CARD  (shared zwischen Desktop + Mobile)
+════════════════════════════════════════════════════════ */
 .card {
   flex: 1 1 0;
   min-width: 0;
@@ -59,7 +109,6 @@
   cursor: pointer;
 }
 
-
 .cardInner {
   position: relative;
   width: 100%;
@@ -68,11 +117,9 @@
   transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-
 .card:hover .cardInner {
   transform: rotateY(180deg);
 }
-
 
 .cardFront,
 .cardBack {
@@ -90,12 +137,9 @@
   box-sizing: border-box;
 }
 
-
 .cardFront {
   background: rgba(145, 201, 243, 0.1);
-
 }
-
 
 .cardBack {
   background: rgba(99, 153, 220, 0.18);
@@ -122,13 +166,11 @@
   margin: 0;
 }
 
-
 .icon {
   width: clamp(48px, 6vw, 80px);
   height: clamp(48px, 6vw, 80px);
   object-fit: contain;
 }
-
 
 .label {
   font-family: 'Quicksand', sans-serif;
@@ -141,7 +183,25 @@
 }
 
 
-@media (max-width: 480px) {
-  .row  { flex-wrap: wrap; }
-  .card { flex: 1 1 calc(50% - 17px); height: 160px; }
+/* ═══════════════════════════════════════════════════════
+   BREAKPOINTS
+════════════════════════════════════════════════════════ */
+
+/* ─── Mobile: Carousel statt Grid ────────────────────── */
+@media (max-width: 640px) {
+  .content  { display: none;  }  /* Desktop-Grid aus */
+  .carousel { display: flex; }   /* Mobile-Carousel ein */
+
+  /* Cards im Carousel: volle Breite, etwas flacher */
+  .card {
+    flex: none;
+    width: 100%;
+    height: 180px;
+  }
+
+  /* Schriften auf Mobile etwas größer da mehr Platz pro Card */
+  .backTitle { font-size: 1rem; }
+  .backDesc  { font-size: 0.85rem; }
+  .label     { font-size: 1rem; }
+  .icon      { width: 56px; height: 56px; }
 }

@@ -14,7 +14,7 @@ export default function Navbar(): JSX.Element {
   const [menuOpen, setMenuOpen] = useState(false);
   const lastScrollY             = useRef(0);
 
-  /* ── Scroll-Hide-Logik ────────────────────────────────────────────── */
+  /* ── Scroll-Hide-Logik ──────────────────────────────────────────── */
   useEffect(() => {
     const onScroll = () => {
       const currentY = window.scrollY;
@@ -23,7 +23,6 @@ export default function Navbar(): JSX.Element {
         setAtTop(true);
       } else {
         setAtTop(false);
-        // Navbar nicht verstecken wenn Menü offen
         if (!menuOpen) setHidden(currentY > lastScrollY.current);
       }
       lastScrollY.current = currentY;
@@ -33,10 +32,28 @@ export default function Navbar(): JSX.Element {
     return () => window.removeEventListener("scroll", onScroll);
   }, [menuOpen]);
 
-  /* ── Body-Scroll-Lock wenn Menü offen ────────────────────────────── */
+  /*
+   * ── Scroll-Lock ────────────────────────────────────────────────────
+   * In Docusaurus Production ist der scrollbare Container oft <html>,
+   * nicht <body>. Beide sperren um sicherzustellen, dass der Lock
+   * in Dev (localhost) UND Production (gehostet) greift.
+   */
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (menuOpen) {
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+    } else {
+      html.style.overflow = "";
+      body.style.overflow = "";
+    }
+
+    return () => {
+      html.style.overflow = "";
+      body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
@@ -54,7 +71,6 @@ export default function Navbar(): JSX.Element {
       >
         <div className={styles.inner}>
 
-          {/* Desktop-Navlinks – auf Mobile ausgeblendet */}
           <nav aria-label="Main navigation" className={styles.desktopNav}>
             <ul className={styles.navList} role="list">
               {NAV_LINKS.map(({ label, href }) => (
@@ -65,7 +81,6 @@ export default function Navbar(): JSX.Element {
             </ul>
           </nav>
 
-          {/* Hamburger-Button – nur auf Mobile sichtbar */}
           <button
             className={styles.hamburger}
             onClick={() => setMenuOpen(true)}
@@ -81,7 +96,6 @@ export default function Navbar(): JSX.Element {
         </div>
       </header>
 
-      {/* ── Mobile Overlay-Menü ───────────────────────────────────────── */}
       <div
         id="mobile-menu"
         className={[styles.overlay, menuOpen ? styles.overlayOpen : ""].join(" ")}
@@ -90,7 +104,6 @@ export default function Navbar(): JSX.Element {
         aria-modal="true"
         aria-label="Navigation menu"
       >
-        {/* X-Button oben rechts */}
         <button
           className={styles.closeBtn}
           onClick={closeMenu}
@@ -99,7 +112,6 @@ export default function Navbar(): JSX.Element {
           ✕
         </button>
 
-        {/* Zentrierte Navlinks */}
         <nav aria-label="Mobile navigation">
           <ul className={styles.overlayList} role="list">
             {NAV_LINKS.map(({ label, href }) => (

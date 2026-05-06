@@ -25,3 +25,25 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+
+
+
+/* Docusaurus Standard-Navbar deaktivieren – Custom Navbar übernimmt */
+.navbar {
+  display: none !important;
+}
+
+/*
+ * Docusaurus berechnet den Main-Wrapper padding-top anhand von
+ * --ifm-navbar-height. Wir setzen die Variable auf unsere tatsächlichen
+ * Navbar-Höhen damit der Offset bei allen Breakpoints stimmt.
+ */
+:root {
+  --ifm-navbar-height: 109px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --ifm-navbar-height: 73px;
+  }
+}

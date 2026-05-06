@@ -82,7 +82,7 @@
    HAMBURGER BUTTON  (nur Mobile sichtbar)
 ════════════════════════════════════════════════════════ */
 .hamburger {
-  display: none;                  /* auf Desktop versteckt */
+  display: none;
   flex-direction: column;
   justify-content: center;
   gap: 7px;
@@ -90,7 +90,7 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  margin-left: auto;              /* schiebt Button nach rechts */
+  margin-left: auto;
 }
 
 .bar {
@@ -104,22 +104,21 @@
 
 /* ═══════════════════════════════════════════════════════
    MOBILE OVERLAY
+   z-index: 9999 – liegt über Docusaurus Production-Wrappern
+   und deren Stacking Contexts (--ifm-z-index-fixed: 200).
 ════════════════════════════════════════════════════════ */
 .overlay {
-  /* Fullscreen, über allem */
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 9999;
 
   background: #ffffff;
 
-  /* Flex: Links vertikal + horizontal zentriert */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  /* Ein/Ausblenden via opacity + visibility (kein Layout-Shift) */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
@@ -130,7 +129,6 @@
   visibility: visible;
 }
 
-/* X-Button oben rechts */
 .closeBtn {
   position: absolute;
   top: 28px;
@@ -144,8 +142,6 @@
   font-weight: 400;
   color: #266AD9;
   line-height: 1;
-
-  /* Klickfläche vergrößern */
   padding: 8px;
 }
 
@@ -169,7 +165,7 @@
   transition: opacity 0.2s ease;
 }
 
-.overlayLink:hover   { opacity: 0.65; }
+.overlayLink:hover { opacity: 0.65; }
 
 .overlayLink:focus-visible {
   outline: 2px solid #266AD9;
@@ -185,17 +181,16 @@
   .inner { padding: 0 3rem; }
 }
 
-/* Ab hier: Hamburger statt Desktop-Nav */
 @media (max-width: 768px) {
-  .header   { height: 73px; }   /* Figma Mobile Navbar-Höhe */
+  .header { height: 73px; }
 
   .inner {
     padding: 0 2rem;
-    justify-content: flex-end;  /* Hamburger nach rechts */
+    justify-content: flex-end;
   }
 
-  .desktopNav { display: none; }  /* Desktop-Links ausblenden */
-  .hamburger  { display: flex; }  /* Hamburger einblenden */
+  .desktopNav { display: none; }
+  .hamburger  { display: flex; }
 }
 
 @media (max-width: 430px) {

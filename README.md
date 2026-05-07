@@ -98,6 +98,21 @@ Required repository secrets:
 
 ## Projects
 
+### V-Server Setup
+Initial hardening and configuration of a cloud Ubuntu server. Covers key-based SSH authentication (Ed25519), disabling password login, Nginx web server setup with a custom server block on port 8081, TLS via Let's Encrypt/Certbot, and GitHub SSH access configuration.
+`Linux` `Nginx` `SSH` `Shell`
+→ [Docs](https://devsecops.michael-fiebelkorn.de/docs/projects/V-Server-Setup/) · [GitHub](https://github.com/Ozinho78/v-server-setup)
+
+### Conduit Container
+Containerized full-stack deployment of a Medium.com clone (Conduit). Multi-stage Docker builds minimize image size for both the Angular SPA (served via Node.js `serve`) and the Django REST API (Gunicorn). All three services – frontend, backend, PostgreSQL – orchestrated via Docker Compose with named volumes and restart policies.
+`Python` `Angular` `Docker` `TypeScript`
+→ [Docs](https://devsecops.michael-fiebelkorn.de/docs/projects/Conduit-Container/) · [GitHub](https://github.com/Ozinho78/conduit-deployment/tree/feature/conduit-container)
+
+### Conduit Deployment
+Production-grade deployment of the Conduit application following a deployment-only repository pattern. Extends the containerization setup with Nginx as reverse proxy for static files and API routing. Includes deploy scripts for Linux and Windows, strict environment-based secrets management, and a fully documented PostgreSQL migration from SQLite.
+`Python` `Angular` `Docker` `Nginx` `Shell`
+→ [Docs](https://devsecops.michael-fiebelkorn.de/docs/projects/Conduit-Deployment/) · [GitHub](https://github.com/Ozinho78/conduit-deployment/tree/feature/container-deployment)
+
 ### Baby Tools Shop
 Django-based e-commerce demo with product catalog, category organization, and Django Admin. Containerized with Docker Compose including automated migrations, static-file collection, and persistent volumes.
 `Python` `Docker` `Shell`

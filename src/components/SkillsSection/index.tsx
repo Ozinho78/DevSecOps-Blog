@@ -90,7 +90,7 @@ export default function SkillsSection(): JSX.Element {
           <h2 className={styles.title}>My skills</h2>
         </div>
 
-        {/* ── Desktop: alle Rows ───────────────────────────────────── */}
+        
         <div className={styles.content}>
           {ROWS.map((row, rowIdx) => (
             <div className={styles.row} key={rowIdx}>
@@ -101,17 +101,17 @@ export default function SkillsSection(): JSX.Element {
           ))}
         </div>
 
-        {/* ── Mobile Carousel ──────────────────────────────────────── */}
+        
         <div className={styles.carousel}>
 
-          {/* Cards der aktiven Row */}
+        
           <div className={styles.carouselSlide}>
             {ROWS[activeRow].map(({ label, icon, desc }) => (
               <SkillCard key={label} label={label} icon={icon} desc={desc} />
             ))}
           </div>
 
-          {/* Dot-Navigation */}
+        
           <div className={styles.dots} role="tablist" aria-label="Skill groups">
             {ROWS.map((_, idx) => (
               <button

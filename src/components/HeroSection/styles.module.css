@@ -1,9 +1,3 @@
-/* ═══════════════════════════════════════════════════════
-   SECTION
-   Kein Navbar-Offset mehr hier — Docusaurus fügt dem
-   Main-Wrapper bereits padding-top für die fixe Navbar
-   hinzu. Wir brauchen nur unser eigenes inneres Padding.
-════════════════════════════════════════════════════════ */
 .section {
   background: #266AD9;
   display: flex;
@@ -14,12 +8,6 @@
   overflow-x: hidden;
 }
 
-
-/* ═══════════════════════════════════════════════════════
-   INNER  –  CSS Grid (Desktop)
-   links:  nameGroup oben / contentBlock unten
-   rechts: photo (beide Zeilen, vertikal zentriert)
-════════════════════════════════════════════════════════ */
 .inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -41,9 +29,6 @@
 .contentBlock { grid-area: content; }
 
 
-/* ═══════════════════════════════════════════════════════
-   NAME GROUP
-════════════════════════════════════════════════════════ */
 .nameGroup {
   display: flex;
   flex-direction: column;
@@ -81,9 +66,6 @@
 }
 
 
-/* ═══════════════════════════════════════════════════════
-   CONTENT BLOCK
-════════════════════════════════════════════════════════ */
 .contentBlock {
   display: flex;
   flex-direction: column;
@@ -137,14 +119,6 @@
   white-space: nowrap;
 }
 
-
-/* ═══════════════════════════════════════════════════════
-   PHOTO
-   aspect-ratio statt fixer height → kein Cropping mehr.
-   Das Foto zeigt sich in seiner natürlichen Proportion.
-   object-fit: cover greift nur wenn das Bild breiter als
-   die Grid-Spalte ist – kein vertikaler Crop.
-════════════════════════════════════════════════════════ */
 .photo {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -156,11 +130,6 @@
 }
 
 
-/* ═══════════════════════════════════════════════════════
-   BREAKPOINTS
-════════════════════════════════════════════════════════ */
-
-/* ─── 1100px ──────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .inner {
     grid-template-columns: 1fr 340px;
@@ -169,8 +138,6 @@
   .name { font-size: 64px; }
 }
 
-
-/* ─── 900px: Flex-Column ──────────────────────────────── */
 @media (max-width: 900px) {
   .inner {
     display: flex;
@@ -178,8 +145,6 @@
     align-items: flex-start;
     gap: 24px;
   }
-  /* Foto auf Mobile: volle Breite bis max 441px, aspect-ratio
-     bestimmt Höhe automatisch – kein Abschneiden mehr */
   .photo {
     width: 100%;
     max-width: 441px;
@@ -192,23 +157,15 @@
 }
 
 
-/* ─── 641–768px: Navbar-Höhen-Offset-Korrektur ───────────
-   Unsere Navbar wechselt bei ≤768px auf 73px Höhe.
-   Docusaurus berechnet den Main-Wrapper padding-top aber
-   noch auf Basis der Desktop-Höhe (109px).
-   Differenz: 109 - 73 = 36px → als extra padding-top addieren.
-──────────────────────────────────────────────────────── */
 @media (min-width: 641px) and (max-width: 768px) {
   .section { padding-top: calc(36px + 48px); }
 }
 
-/* ─── 768px: Hamburger-Navbar, weniger padding ────────── */
 @media (max-width: 768px) {
   .section { padding: 48px 1.5rem; }
 }
 
 
-/* ─── 600px ───────────────────────────────────────────── */
 @media (max-width: 600px) {
   .name        { font-size: 48px; }
   .greeting    { font-size: 24px; }
@@ -216,22 +173,20 @@
   .description { font-size: 18px; }
 }
 
-
-/* ─── 430px: Figma Mobile 390px ──────────────────────── */
 @media (max-width: 430px) {
   .inner       { gap: 24px; }
   .name        { font-size: 48px; }
   .greeting    { font-size: 24px; }
   .title       { font-size: 24px; }
   .description { font-size: 16px; font-weight: 500; }
-  /* Foto: max-width auf Figma-Spec, aspect-ratio hält Proportionen */
+
   .photo       { max-width: 313px; border-radius: 20px; }
   .cta         { width: 129px; height: 47px; }
   .ctaLabel    { font-size: 16px; }
 }
 
 
-/* ─── 320px ───────────────────────────────────────────── */
+
 @media (max-width: 320px) {
   .section     { padding: 32px 1rem; }
   .inner       { gap: 20px; }

@@ -11,14 +11,12 @@
 
 
 .pageWrapper {
-  padding-top: 109px;   /* Desktop: Navbar-Höhe */
+  padding-top: 109px;
   min-height: 100vh;
   background: #0f172a;
   overflow-x: hidden;
 }
 
-/* Breakpoint muss mit Navbar-Hamburger-Switch übereinstimmen (768px)
-   und der Wert mit der Hamburger-Navbar-Höhe (73px) */
 @media (max-width: 768px) {
   .pageWrapper {
     padding-top: 73px;

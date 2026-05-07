@@ -45,12 +45,6 @@ export default function Navbar(): JSX.Element {
 
   const closeMenu = () => setMenuOpen(false);
 
-  /*
-   * Overlay: konditionelles Rendering statt CSS-Klassen-Toggle.
-   * Wenn menuOpen=false ist das Overlay nicht im DOM →
-   * kein CSS-State, kein Visibility-Bug in Production.
-   * Fade-in via CSS @keyframes auf dem Element selbst.
-   */
   const overlay = menuOpen ? (
     <div
       id="mobile-menu"

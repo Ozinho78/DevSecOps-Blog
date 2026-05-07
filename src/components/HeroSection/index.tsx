@@ -6,16 +6,6 @@ export default function HeroSection(): JSX.Element {
     <section className={styles.section} id="about">
       <div className={styles.inner}>
 
-        {/*
-          DOM-Reihenfolge = Mobile-Reihenfolge (Figma):
-            1. nameGroup    → Greeting / Name / Title
-            2. photo        → Foto
-            3. contentBlock → Description + CTA
-
-          Desktop: CSS Grid ordnet nameGroup + contentBlock links,
-          photo rechts über beide Zeilen.
-        */}
-
         <div className={styles.nameGroup}>
           <p className={styles.greeting}>Hey there 👋 I am</p>
           <h1 className={styles.name}>Michael Fiebelkorn</h1>

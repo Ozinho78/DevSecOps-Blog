@@ -9,7 +9,6 @@ const PROJECTS = [
   { id: 5, name: "WordPress"        },
 ];
 
-// Reihenfolge der Mobile-Highlight-Cards: Juice Shop, Minecraft, Truck Signs
 const MOBILE_HIGHLIGHT_IDS = [3, 4, 2];
 
 const T = {
@@ -89,7 +88,7 @@ const FEATURED_DATA: Record<number, Project> = {
   },
 };
 
-/* ── Wiederverwendbare Tag-Zeile ────────────────────────────────────── */
+
 function TagRow({ tags }: { tags: Tag[] }) {
   return (
     <div className={styles.tags}>
@@ -103,7 +102,7 @@ function TagRow({ tags }: { tags: Tag[] }) {
   );
 }
 
-/* ── Mobile Highlight-Card ──────────────────────────────────────────── */
+
 function MobileCard({ project, rank }: { project: Project; rank: number }) {
   return (
     <div className={styles.mobileCard}>
@@ -141,7 +140,6 @@ export default function ProjectsSection(): JSX.Element {
       <div className={styles.inner}>
         <h2 className={styles.title}>My project highlights</h2>
 
-        {/* ── Desktop Layout ─────────────────────────────────────────── */}
         <div className={styles.content}>
 
           <div className={styles.list}>
@@ -197,7 +195,6 @@ export default function ProjectsSection(): JSX.Element {
 
         </div>
 
-        {/* ── Mobile Layout: 3 gestapelte Highlight-Cards ────────────── */}
         <div className={styles.mobileList}>
           {MOBILE_HIGHLIGHT_IDS.map((id, idx) => (
             <MobileCard

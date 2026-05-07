@@ -23,7 +23,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
 
-/* Docusaurus Standard-Navbar deaktivieren – Custom Navbar übernimmt */
+
 .navbar {
   display: none !important;
 }

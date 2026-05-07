@@ -109,10 +109,6 @@
 .contactLink:hover    { opacity: 0.75; }
 
 
-/* ═══════════════════════════════════════════════════════
-   MOBILE  ≤768px
-   Reihenfolge: title → infoText → subTitle → contacts
-════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .section { padding: 48px 1.5rem; }
 

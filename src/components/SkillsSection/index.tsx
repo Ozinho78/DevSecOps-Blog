@@ -1,4 +1,4 @@
-import React, { JSX } from 'react';
+import React, { JSX, useState } from 'react';
 import styles from './styles.module.css';
 
 const ROWS = [
@@ -55,56 +55,79 @@ const ROWS = [
   ],
 ];
 
+function SkillCard({ label, icon, desc }: { label: string; icon: string; desc: string }) {
+  return (
+    <div className={styles.card}>
+      <div className={styles.cardInner}>
+        <div className={styles.cardFront}>
+          <img className={styles.icon} src={icon} alt={label} loading="lazy" />
+          <span className={styles.label}>
+            {label.split('\n').map((line, i, arr) => (
+              <React.Fragment key={i}>
+                {line}
+                {i < arr.length - 1 && <br />}
+              </React.Fragment>
+            ))}
+          </span>
+        </div>
+        <div className={styles.cardBack}>
+          <span className={styles.backTitle}>{label.split('\n').join(' ')}</span>
+          <p className={styles.backDesc}>{desc}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function SkillsSection(): JSX.Element {
+  const [activeRow, setActiveRow] = useState(0);
+
   return (
     <section className={styles.section} id="skills">
       <div className={styles.inner}>
-
 
         <div className={styles.headline}>
           <h2 className={styles.title}>My skills</h2>
         </div>
 
-
+        
         <div className={styles.content}>
           {ROWS.map((row, rowIdx) => (
             <div className={styles.row} key={rowIdx}>
               {row.map(({ label, icon, desc }) => (
-                <div className={styles.card} key={label}>
-
-                  <div className={styles.cardInner}>
-
-
-                    <div className={styles.cardFront}>
-                      <img
-                        className={styles.icon}
-                        src={icon}
-                        alt={label}
-                        loading="lazy"
-                      />
-                      <span className={styles.label}>
-                        {label.split('\n').map((line, i, arr) => (
-                          <React.Fragment key={i}>
-                            {line}
-                            {i < arr.length - 1 && <br />}
-                          </React.Fragment>
-                        ))}
-                      </span>
-                    </div>
-
-
-                    <div className={styles.cardBack}>
-                      <span className={styles.backTitle}>
-                        {label.split('\n').join(' ')}
-                      </span>
-                      <p className={styles.backDesc}>{desc}</p>
-                    </div>
-
-                  </div>
-                </div>
+                <SkillCard key={label} label={label} icon={icon} desc={desc} />
               ))}
             </div>
           ))}
+        </div>
+
+        
+        <div className={styles.carousel}>
+
+        
+          <div className={styles.carouselSlide}>
+            {ROWS[activeRow].map(({ label, icon, desc }) => (
+              <SkillCard key={label} label={label} icon={icon} desc={desc} />
+            ))}
+          </div>
+
+        
+          <div className={styles.dots} role="tablist" aria-label="Skill groups">
+            {ROWS.map((_, idx) => (
+              <button
+                key={idx}
+                role="tab"
+                aria-selected={idx === activeRow}
+                aria-label={`Skill group ${idx + 1}`}
+                className={[
+                  styles.dot,
+                  idx === activeRow ? styles.dotActive : "",
+                ].join(" ")}
+                onClick={() => setActiveRow(idx)}
+              />
+            ))}
+          </div>
+
         </div>
 
       </div>

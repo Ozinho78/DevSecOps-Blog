@@ -42,6 +42,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          exclude: ['guides/**', 'knowledge-base/**'],
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -101,10 +102,7 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/guides/intro',
-            },
+            { label: 'Projects', to: '/docs/projects/overview' },
           ],
         },
         {

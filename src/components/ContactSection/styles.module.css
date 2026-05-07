@@ -15,36 +15,30 @@
   row-gap: 24px;
 }
 
+.title    { grid-column: 1; grid-row: 1; align-self: end; }
+.subTitle { grid-column: 2; grid-row: 1; align-self: end; }
+.infoText { grid-column: 1; grid-row: 2; }
+.contacts { grid-column: 2; grid-row: 2; }
 
 .title {
-  grid-column: 1;
-  grid-row: 1;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 120%;
   color: #ffffff;
   margin: 0;
-  align-self: end;
 }
 
-
 .subTitle {
-  grid-column: 2;
-  grid-row: 1;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 24px;
   line-height: 120%;
   color: #ffffff;
   margin: 0;
-  align-self: end;
 }
 
-
 .infoText {
-  grid-column: 1;
-  grid-row: 2;
   font-family: 'Quicksand', sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -54,10 +48,7 @@
   margin: 0;
 }
 
-
 .contacts {
-  grid-column: 2;
-  grid-row: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -65,14 +56,12 @@
   gap: 24px;
 }
 
-
 .contactRow {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
 }
-
 
 .iconMail {
   width: 32px;
@@ -105,7 +94,6 @@
   fill: #ffffff;
 }
 
-
 .contactLink {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
@@ -117,22 +105,34 @@
   white-space: nowrap;
 }
 
-.contactLinkUnderline {
-  text-decoration: underline;
-}
-
-.contactLink:hover {
-  opacity: 0.75;
-}
+.contactLinkUnderline { text-decoration: underline; }
+.contactLink:hover    { opacity: 0.75; }
 
 
 @media (max-width: 768px) {
+  .section { padding: 48px 1.5rem; }
+
   .inner {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
+    row-gap: 20px;
   }
+
   .title    { grid-column: 1; grid-row: 1; }
-  .subTitle { grid-column: 1; grid-row: 2; font-size: 18px; }
-  .infoText { grid-column: 1; grid-row: 3; }
-  .contacts { grid-column: 1; grid-row: 4; }
+  .infoText { grid-column: 1; grid-row: 2; font-size: 16px; }
+  .subTitle { grid-column: 1; grid-row: 3; font-size: 18px; }
+  .contacts { grid-column: 1; grid-row: 4; gap: 16px; }
+
+  .contactLink { font-size: 15px; white-space: normal; word-break: break-all; }
+}
+
+@media (max-width: 430px) {
+  .section { padding: 40px 1.25rem; }
+}
+
+@media (max-width: 320px) {
+  .section  { padding: 32px 1rem; }
+  .title    { font-size: 2rem; }
+  .infoText { font-size: 14px; }
+  .subTitle { font-size: 16px; }
 }
